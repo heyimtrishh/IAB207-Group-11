@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="author" content="Trish Dinh">
+        <meta name="description" content="Home Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--Link to CSS File-->
+        <link rel="stylesheet" href="static/style/style.css">
+        
+        <!--Title in Tab Window-->
+        <title>Home</title>
+
+        <!--Bootstrap CSS-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+    <!--Website-->
+    <body class="d-flex flex-column min-vh-100">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <header>
+            <!--Navigation Bar-->
+            <nav class="navbar navbar-expand-lg" aria-label="Main Navigation">
+                <section class="container-fluid">
+                    <!--Site Name on Top Left Side-->
+                    <a class="site-name" href="index.html">craft unity events.</a>
+                    <!--Button for NavBar-->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>                    
+                    <div class="collapse navbar-collapse" id="navbarToggler">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <!--Links for Navigation Bar-->
+                            <li class="nav-item"><a class="active-page" href="index.html">Home</a></li>
+                            <li class="nav-item"><a href ="eventcreation.html">Event Creation</a></li>
+                            <li class="nav-item"><a href ="userbookinghistory.html">My Bookings</a></li>
+                        </ul> 
+                        <!--Search Bar -->
+                        <form class="search d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-dark" type="submit">Search</button>
+                        </form>
+                    </div>
+                </section>
+            </nav>
+        </header>
+
+        <!--Main Section -->
+        <main>
+            <section class="index">
+                <section class="jumbotron text-center">
+                    <h1 class="display-4">explore the vibrant world of arts & crafts</h1>
+                    <p class="lead">
+                        <a href="#exhibitions" class="btn btn-dark shadow-none mb-2" role="button">Exhibitions</a>
+                        <a href="#workshops" class="btn btn-dark shadow-none mb-2" role="button">Workshops</a>
+                        <a href="#demos" class="btn btn-dark shadow-none mb-2" role="button">Live Demonstrations</a>
+                    </p>
+                </section>
+
+                <!--Upcoming Events-->
+                <section class="upcoming container-fluid">
+                    <div class="row">
+                        <div class="maintitle col-sm-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
+                                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                                <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                            </svg>
+                            Upcoming Events
+                        </div>
+
+                        <div class="exploremore col-sm-4 text-end">
+                            <a href="#">See all events ></a>
+                        </div>
+                    </div>
+                    <div class="cardrow row">
+                        <!--First Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/pottery_workshop.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Pottery Beginner Workshop</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">Every Sunday</p>
+                                <p class="fs-6">1pm - 5pm</p>
+                            </div>
+                        </div>
+                        <!--Second Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/exhibition.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Special Exhibition</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">1st May - 1st July</p>
+                                <p class="fs-6">8am - 8pm</p>
+                            </div>
+                        </div>
+                        <!--Third Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/sketching.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Live Sketching w/ Maria</a></h3>
+                            <h4 class="fs-6">Sold Out</h4>
+                            <div class="event-time">
+                                <p class="fs-6">14th July, Monday</p>
+                                <p class="fs-6">8am - 12pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" id="exhibitions">
+                </section>
+
+                <!--Exhibitions-->
+                <section class="upcoming container-fluid">
+                    <div class="row">
+                        <div class="maintitle col-sm-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-easel-fill" viewBox="0 0 16 16">
+                                <path d="M8.473.337a.5.5 0 0 0-.946 0L6.954 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h1.85l-1.323 3.837a.5.5 0 1 0 .946.326L4.908 11H7.5v2.5a.5.5 0 0 0 1 0V11h2.592l1.435 4.163a.5.5 0 0 0 .946-.326L12.15 11H14a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H9.046z"/>
+                            </svg>
+                            Popular Exhibitions
+                        </div>
+
+                        <div class="exploremore col-sm-4 text-end">
+                            <a href="#">See all events ></a>
+                        </div>
+                    </div>
+                    <div class="cardrow row">
+                        <!--First Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/artexhibition.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Indian Art History Exhibition</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">Every Weekday</p>
+                                <p class="fs-6">1pm - 5pm</p>
+                            </div>
+                        </div>
+                        <!--Second Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/fairytale.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Fairytale Exhibition</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">1st June - 31st October</p>
+                                <p class="fs-6">12pm - 8pm</p>
+                            </div>
+                        </div>
+                        <!--Third Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/flowerexhibition.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">'Art of the Flower' Exhibition</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">30th May - 30th December</p>
+                                <p class="fs-6">8am - 8pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" id="workshops">
+                </section>
+
+                <!--Workshop Events-->
+                <section class="upcoming container-fluid">
+                    <div class="row">
+                        <div class="maintitle col-sm-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-heart-fill" viewBox="0 0 16 16">
+                                <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+                            </svg>
+                            Popular Workshops
+                        </div>
+
+                        <div class="exploremore col-sm-4 text-end">
+                            <a href="#">See all events ></a>
+                        </div>
+                    </div>
+                    <div class="cardrow row">
+                        <!--First Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/paintworkshop.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Paint & Sip Workshop</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">Every Wednesday</p>
+                                <p class="fs-6">8am - 12pm</p>
+                            </div>
+                        </div>
+                        <!--Second Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/jewelleryworkshop.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Jewellery Making Workshop</a></h3>
+                            <h4 class="fs-6">Sold Out</h4>
+                            <div class="event-time">
+                                <p class="fs-6">Every Second Sunday</p>
+                                <p class="fs-6">5am - 9pm</p>
+                            </div>
+                        </div>
+                        <!--Third Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/resinworkshop.png" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Resin Keychain Workshop</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">14th July, Monday</p>
+                                <p class="fs-6">12pm - 4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" id="demos">
+                </section>
+
+                <!--Live Demos-->
+                <section class="upcoming container-fluid">
+                    <div class="row">
+                        <div class="maintitle col-sm-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
+                                <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                            </svg>
+                            New Live Demonstrations
+                        </div>
+
+                        <div class="exploremore col-sm-4 text-end">
+                            <a href="#">See all events ></a>
+                        </div>
+                    </div>
+                    <div class="cardrow row">
+                        <!--First Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/grafittiart.png" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Grafitti Mural Live Art</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">Tuesday, 9th July</p>
+                                <p class="fs-6">1pm - 5pm</p>
+                            </div>
+                        </div>
+                        <!--Second Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/charity.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Live Painting Charity</a></h3>
+                            <h4 class="fs-6">Sold Out</h4>
+                            <div class="event-time">
+                                <p class="fs-6">1st May - 1st July</p>
+                                <p class="fs-6">10am - 6pm</p>
+                            </div>
+                        </div>
+                        <!--Third Card-->
+                        <div class="col-md">
+                            <a href="eventdetails.html"><img src="static/img/livepainting.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
+                            <h3><a class="titlelink" href="eventdetails.html">Painting Demonstration with Grace</a></h3>
+                            <h4 class="fs-6">Open</h4>
+                            <div class="event-time">
+                                <p class="fs-6">28th July, Sunday</p>
+                                <p class="fs-6">1am - 6pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <div class="footer container-fluid">
+            <footer class="row row-cols-1 row-cols-sm-3 row-cols-md-3 p-5">
+            <div class="col">
+                <h2 class="fs-1">craft unity events.</h2>
+                <p class="text-muted">© Craft Unity Events.</p>
+            </div>
+            
+
+            <div class="col">
+                <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Home</a></li>
+                <li class="nav-item mb-2"><a href="eventcreation.html" class="nav-link p-0 text-muted">Create Events</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                </ul>
+            </div>
+        
+            <div class="col">
+                <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Profile</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sign up</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Log In</a></li>
+                <li class="nav-item mb-2"><a href="userbookinghistory.html" class="nav-link p-0 text-muted">Booking History</a></li>
+                </ul>
+            </div>
+            </footer>
+        </div>
+    </body>
+    
