@@ -1,0 +1,6 @@
+Added forms needed to do login / register
+Added form to create event (combined ticket creator as I could not find a way to do buttons that add another form (let me know if this needs to be investigated further))
+Did not yet create forms for booking tickets as I was unsure if I needed to implement it with variable placeholders given that events can have a number of ticket types in the original website designs, please let me know how you would like to address/change this
+
+Let me know what work you want me to tackle next
+-Harrison
