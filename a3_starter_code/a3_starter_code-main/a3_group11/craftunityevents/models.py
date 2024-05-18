@@ -17,16 +17,16 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"Name: {self.name}"
 
-class Destination(db.Model):
-    __tablename__ = 'destinations'
+class Events(db.Model):
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
     currency = db.Column(db.String(3))
     # ... Create the Comments db.relationship
-	# relation to call destination.comments and comment.destination
-    comments = db.relationship('Comment', backref='destination')
+	# relation to call events.comments and comment.events
+    comments = db.relationship('Comment', backref='event')
 
 	# string print method
     def __repr__(self):
