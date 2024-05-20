@@ -1,3 +1,13 @@
+/app
+    - app_runner.py
+    /services
+        - app.py 
+    /templates
+        - mainpage.html
+    /static
+        /styles
+            - style.css
+
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 /* Global Styles */
