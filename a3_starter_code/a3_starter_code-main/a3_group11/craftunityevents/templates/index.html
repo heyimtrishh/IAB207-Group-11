@@ -38,6 +38,7 @@
                 <!--Upcoming Events-->
                 <section class="upcoming container-fluid">
                     <div class="row">
+                        {% for event in events_upcoming %}
                         <div class="maintitle col-sm-8">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
@@ -46,44 +47,40 @@
                             Upcoming Events
                         </div>
 
+                        <div class="cardrow row">
+                            <div class="col-md">
+                                <a href="{{url_for('event.show', id = event.id)}}"><img src="{{ event.image }}" alt="Event Image"></a>
+                                <h3><a class="titlelink" href="{{url_for('event.show', id = event.id)}}">{{ event.name }}</a></h3>
+                                <h4 class="fs-6">{{ event.status }}</h4>
+                                    <div class="event-time">
+                                        <p class="fs-6">{{ event.date }}</p>
+                                        <p class="fs-6">{{ event.time }}</p>
+                                    </div>
+                            </div>
+                        </div>
+
                         <div class="exploremore col-sm-4 text-end">
-                            <a href="#">See all events ></a>
+                            <a href="{{url_for('event.show', id = event.id)}}">See all events ></a>
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="cardrow row">
-                        <!--First Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/pottery_workshop.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Pottery Beginner Workshop</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">Every Sunday</p>
-                                <p class="fs-6">1pm - 5pm</p>
-                            </div>
-                        </div>
-                        <!--Second Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/exhibition.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Special Exhibition</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">1st May - 1st July</p>
-                                <p class="fs-6">8am - 8pm</p>
-                            </div>
-                        </div>
-                        <!--Third Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/sketching.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Live Sketching w/ Maria</a></h3>
-                            <h4 class="fs-6">Sold Out</h4>
-                            <div class="event-time">
-                                <p class="fs-6">14th July, Monday</p>
-                                <p class="fs-6">8am - 12pm</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="my-4" id="exhibitions">
                 </section>
+
+                    <!-- Event Card -->
+                    {% for event in events %}
+                    <div class="cardrow row">
+                        <div class="col-md">
+                            <a href="{{url_for('event.show', id = event.id)}}"><img src="{{ event.image }}" alt="Event Image"></a>
+                            <h3><a class="titlelink" href="{{url_for('event.show', id = event.id)}}">{{ event.name }}</a></h3>
+                            <h4 class="fs-6">{{ event.status }}</h4>
+                                <div class="event-time">
+                                    <p class="fs-6">{{ event.date }}</p>
+                                    <p class="fs-6">{{ event.time }}</p>
+                                </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
 
                 <!--Exhibitions-->
                 <section class="upcoming container-fluid">
@@ -99,37 +96,20 @@
                             <a href="#">See all events ></a>
                         </div>
                     </div>
+
                     <div class="cardrow row">
+                        {% for event in events_exhibition %}
                         <!--First Card-->
                         <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/artexhibition.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Indian Art History Exhibition</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">Every Weekday</p>
-                                <p class="fs-6">1pm - 5pm</p>
-                            </div>
+                            <a href="{{url_for('event.show', id = event.id)}}"><img src="{{ event.image }}" alt="Event Image"></a>
+                            <h3><a class="titlelink" href="{{url_for('event.show', id = event.id)}}">{{ event.name }}</a></h3>
+                            <h4 class="fs-6">{{ event.status }}</h4>
+                                <div class="event-time">
+                                    <p class="fs-6">{{ event.date }}</p>
+                                    <p class="fs-6">{{ event.time }}</p>
+                                </div>
                         </div>
-                        <!--Second Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/fairytale.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Fairytale Exhibition</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">1st June - 31st October</p>
-                                <p class="fs-6">12pm - 8pm</p>
-                            </div>
-                        </div>
-                        <!--Third Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/flowerexhibition.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">'Art of the Flower' Exhibition</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">30th May - 30th December</p>
-                                <p class="fs-6">8am - 8pm</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <hr class="my-4" id="workshops">
                 </section>
@@ -149,37 +129,18 @@
                         </div>
                     </div>
                     <div class="cardrow row">
+                        {% for event in events_workshop %}
                         <!--First Card-->
                         <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/paintworkshop.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Paint & Sip Workshop</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">Every Wednesday</p>
-                                <p class="fs-6">8am - 12pm</p>
-                            </div>
+                            <a href="{{url_for('event.show', id = event.id)}}"><img src="{{ event.image }}" alt="Event Image"></a>
+                            <h3><a class="titlelink" href="{{url_for('event.show', id = event.id)}}">{{ event.name }}</a></h3>
+                            <h4 class="fs-6">{{ event.status }}</h4>
+                                <div class="event-time">
+                                    <p class="fs-6">{{ event.date }}</p>
+                                    <p class="fs-6">{{ event.time }}</p>
+                                </div>
                         </div>
-                        <!--Second Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/jewelleryworkshop.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Jewellery Making Workshop</a></h3>
-                            <h4 class="fs-6">Sold Out</h4>
-                            <div class="event-time">
-                                <p class="fs-6">Every Second Sunday</p>
-                                <p class="fs-6">5am - 9pm</p>
-                            </div>
-                        </div>
-                        <!--Third Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/resinworkshop.png" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Resin Keychain Workshop</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">14th July, Monday</p>
-                                <p class="fs-6">12pm - 4pm</p>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
                     <hr class="my-4" id="demos">
                 </section>
 
@@ -197,41 +158,21 @@
                             <a href="#">See all events ></a>
                         </div>
                     </div>
+                    
                     <div class="cardrow row">
+                        {% for event in events_demo %}
                         <!--First Card-->
                         <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/grafittiart.png" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Grafitti Mural Live Art</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">Tuesday, 9th July</p>
-                                <p class="fs-6">1pm - 5pm</p>
-                            </div>
+                            <a href="{{url_for('event.show', id = event.id)}}"><img src="{{ event.image }}" alt="Event Image"></a>
+                            <h3><a class="titlelink" href="{{url_for('event.show', id = event.id)}}">{{ event.name }}</a></h3>
+                            <h4 class="fs-6">{{ event.status }}</h4>
+                                <div class="event-time">
+                                    <p class="fs-6">{{ event.date }}</p>
+                                    <p class="fs-6">{{ event.time }}</p>
+                                </div>
                         </div>
-                        <!--Second Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/charity.jpg" class="imagehover" alt="Floating suitcases at exhibition"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Live Painting Charity</a></h3>
-                            <h4 class="fs-6">Sold Out</h4>
-                            <div class="event-time">
-                                <p class="fs-6">1st May - 1st July</p>
-                                <p class="fs-6">10am - 6pm</p>
-                            </div>
-                        </div>
-                        <!--Third Card-->
-                        <div class="col-md">
-                            <a href="eventdetails.html"><img src="static/img/livepainting.jpg" class="imagehover" alt="Group of people in pottery workshop"></a>
-                            <h3><a class="titlelink" href="eventdetails.html">Painting Demonstration with Grace</a></h3>
-                            <h4 class="fs-6">Open</h4>
-                            <div class="event-time">
-                                <p class="fs-6">28th July, Sunday</p>
-                                <p class="fs-6">1am - 6pm</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </section>
             </section>
-        </main>
-        </div>
-    </body>
-    
+{% endblock %}
