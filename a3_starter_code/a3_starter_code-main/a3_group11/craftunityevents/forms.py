@@ -17,6 +17,7 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    contact = IntegerField("Contact Number", validators=[InputRequired('Please enter a valid contact number')])
     # Linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[
         InputRequired(),
