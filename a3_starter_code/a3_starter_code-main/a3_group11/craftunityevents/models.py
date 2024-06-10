@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     contact_number = db.Column(db.Integer, index=True, nullable=False)
     email_id = db.Column(db.String(100), index=True, nullable=False)
     address = db.Column(db.String(100), index=True, nullable=False)
-    password_hash = db.Column(db.String(500), nullable=False)
+    password_hash = db.Column(db.String(100), nullable=False)
 
     
     comments = db.relationship('Comment', backref='user', lazy=True)
