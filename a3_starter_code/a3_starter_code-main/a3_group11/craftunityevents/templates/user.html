@@ -1,21 +1,50 @@
-{% include "base.html" %}
-{% from "bootstrap5/form.html" import render_form %}
-{% block body %}
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-<div class="page-header">
-    <h4>{{heading}}</h4>
+<!-- Title -->
+{% block title %} - {{ heading }} {% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="accounts-background">
+    <div class="accounts">
+        <div class="account-box">
+            <h2>{{ heading }}</h2>
+
+            <form method="post">
+                {{ form.csrf_token }}
+                {% for field in form %}
+                <!-- Hide CSRFTokenField -->
+                {% if field.type == "CSRFTokenField" %}
+                {% else %}
+                <div class="form-floating mt-3">
+                    <!-- WTF field -->
+                    {{ field(class="form-control", placeholder=field.label.text) }}
+                    <!-- WTF label -->
+                    <label for="{{ field.id }}">{{ field.label.text }}</label>
+                    <!-- WTF validation error -->
+                    <ul class="text-danger">
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <input type="submit" class="btn btn-primary py-2 my-3" id="submit" value="{{ heading }}" />
+            </form>
+
+            <!-- Display a link to the Login page if user is on Register page -->
+            <!-- Display a link to the Register page if user is on Log In page -->
+            {% if heading|lower == "register" %}
+            <a href="{{ url_for('main.login') }}" class="text-center">Sign In Now</a>
+            {% else %}
+            <a href="{{ url_for('main.register') }}" class="text-center">Don't have an account?</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
+{% endblock %}
 
-<!-- Form rendering is simple and easy if using bootstrap -->
-<div class="col-md-6">
-    {{render_form(form)}}
 </div>
-
-<!-- When you have login form, then do show the user a link to register -->
-{% if heading|lower =='login' %}
-<div class="col-md-4">
-    <p>New user? <a href="{{ url_for('register') }}">Click here to register</a>.</p>
-</div>
-{% endif %}
-
 {% endblock %}
