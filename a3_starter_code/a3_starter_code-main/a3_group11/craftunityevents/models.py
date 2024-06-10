@@ -22,10 +22,9 @@ class User(db.Model, UserMixin):
 class Event(db.Model):
     __tablename__ = 'event'
     id = db.Column(db.Integer, primary_key=True)
-    status = db.Column(db.String(10), nullable=False)
     event_name = db.Column(db.String(100), nullable=False)
-    organiser_name = db.Column(db.String(50), nullable=False)
     category = db.Column(db.String(20), nullable=False)
+    status = db.Column(db.String(10), nullable=False)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.String(20), nullable=False)
     location = db.Column(db.String(200), nullable=False)
@@ -54,7 +53,7 @@ class Comment(db.Model):
 class Booking(db.Model):
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(100))
+    event_name = db.Column(db.String(100), nullable=False)
     num_tickets = db.Column(db.Integer, index=True, nullable=False)
     price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
