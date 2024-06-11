@@ -25,7 +25,7 @@ def event_details(id):
     return render_template('eventDetails.html', event=event, form=comment_form)
 
 # Create Event
-@destbp.route('/<id>/create', methods=['GET', 'POST'])
+@destbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     print('Method type: ', request.method)
