@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     
     comments = db.relationship('Comment', backref='user', lazy=True)
     bookings = db.relationship('Booking', backref='user', lazy=True)
-    created_event = db.relationship('Event', backred='user', laxy=True)
+    created_event = db.relationship('Event', backref='user', lazy=True)
 
     def __repr__(self):
         return f"Name: {self.name}"
