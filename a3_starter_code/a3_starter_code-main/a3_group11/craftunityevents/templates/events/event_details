@@ -25,7 +25,7 @@
                                     <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                                     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                                 </svg>
-                                {{ event.date }}, {{ event.time }}
+                                {{ event.date }}, {{ event.start_time }}, {{ event.end_time }}
                             </div>
                             <!--Location-->
                             <div>
@@ -44,10 +44,10 @@
 
                             <!-- Button trigger modal -->
                             <div class="bookingmodal d-flex align-items-center">
-                                <span class="badge bg-secondary me-3">{{ event.status }}</span>
                                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Book Tickets
                                 </button>
+                                <span class="badge bg-secondary me-3">{{ event.status }}</span>
                             </div>
 
                             <!-- Modal -->
@@ -68,7 +68,7 @@
                                                             <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                                                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                                                         </svg>
-                                                        {{ event.date }}, {{ event.time }}
+                                                        {{ event.date }}, {{ event.start_time }}, {{ event.end_time }}
                                                         <!--Select Ticket-->
                                                         <div class="selectticket row border border-secondary-subtle rounded p-3 my-3 mx-1">
                                                             <div class="col-sm-9">
@@ -141,8 +141,7 @@
                             <img class="img-fluid rounded-circle" src="static/img/organiserpfp.jpeg" class="commentpfp">
                         </div>
                         <div class="organiserinfo col-sm-9">
-                            <h5>Katrina Haydens</h5>
-                            <p class="organiserdesc">Passionate about pottery, teaching pottery for 10 years and ongoing! Beginner sessions every Sunday unless stated in my profile, please feel free to contact me about any general pottery inquiries or session inquiries!</p>
+                            <h5>{{ event.organiser_name }}</h5>
                         </div>
                     </div>
                 </div>
