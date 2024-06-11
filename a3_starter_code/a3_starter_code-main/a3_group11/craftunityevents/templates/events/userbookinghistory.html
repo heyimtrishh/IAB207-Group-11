@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="author" content="Trish Dinh">
+        <meta name="description" content="Home Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--Link to CSS File-->
+        <link rel="stylesheet" href="static/style/style.css">
+        
+        <!--Title in Tab Window-->
+        <title>Home</title>
+
+        <!--Bootstrap CSS-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+    <!--Website -->
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <header>
+            <!--Navigation Bar-->
+            <nav class="navbar navbar-expand-lg" aria-label="Main Navigation">
+                <section class="container-fluid">
+                    <!--Site Name on Top Left Side-->
+                    <a class="site-name" href="index.html">craft unity events.</a>
+                    <!--Button for NavBar-->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>                    
+                    <div class="collapse navbar-collapse" id="navbarToggler">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <!--Links for Navigation Bar-->
+                            <li class="nav-item"><a class="active-page" href="index.html">Home</a></li>
+                            <li class="nav-item"><a href ="eventcreation.html">Event Creation</a></li>
+                            <li class="nav-item"><a href ="userbookinghistory.html">My Bookings</a></li>
+                        </ul> 
+                        <!--Search Bar -->
+                        <form class="search d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-dark" type="submit">Search</button>
+                        </form>
+                    </div>
+                </section>
+            </nav>
+        </header>
+
+        <main class="userbooking">
+            <!--Filter Search-->
+            <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="col-sm-7">
+                        <h1>Booking History</h1>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                            <button type="button" class="btn btn-outline-dark">Search</button>
+                            <button type="button" class="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <label for="exampleFilterSearch" class="form-label container m-0">Sort By</label>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">This Week</a></li>
+                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                <li><a class="dropdown-item" href="#">Newest to Oldest</a></li>
+                                <li><a class="dropdown-item" href="#">Oldest to Newest</a></li>
+                                <li><a class="dropdown-item" href="#">A to Z</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+            <!--Event Booking History Card-->
+            <div class="eventbooking container-fluid border mb-4">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="eventdetails.html"><img src="static/img/pottery_workshop.jpg" class="bookingpic img-fluid rounded-start" alt="People sculpting at pottery workshop."></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="bookingdetails row">
+                            <div class="eventname col-12 col-sm-6">
+                                <h4><a href="eventdetails.html" class="titlelink">Pottery Beginner Workshop</a></h4>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                    </svg>
+                                    123 Elizabeth Street, Brisbane City, 4000
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                    </svg>
+                                    $125
+                                </div>
+                                <div class="mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                                        <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z"/>
+                                    </svg>
+                                    1x General Ticket
+                                </div>
+                                
+                            </div>
+                            <!--Event Date & Status-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Event Date</h5>
+                                <p class="card-text mb-0">14th May, 2024</p>
+                                <p class="card-text">1pm to 5pm</p>
+                                <h5 class="card-title mb-2">Status</h5>
+                                <p id="upcoming">Upcoming</p>
+                            </div>
+                            <!--Order ID-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Order ID</h5>
+                                <p>74383</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Event Booking History Card-->
+            <div class="eventbooking container-fluid border mb-4">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="eventdetails.html"><img src="static/img/fairytale.jpg" class="bookingpic img-fluid rounded-start" alt="Fairytale exhibition display"></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="bookingdetails row">
+                            <div class="eventname col-12 col-sm-6">
+                                <h4><a href="eventdetails.html" class="titlelink">Fairytale Exhibition</a></h4>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                    </svg>
+                                    98 Elizabeth Street, Brisbane City, 4000
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                    </svg>
+                                    $60
+                                </div>
+                                <div class="mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                                        <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z"/>
+                                    </svg>
+                                    3x Adult Tickets
+                                </div>
+                            </div>
+                            <!--Event Date & Status-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Event Date</h5>
+                                <p class="card-text mb-0">18th September, 2024</p>
+                                <p class="card-text">12pm to 8pm</p>
+                                <h5 class="card-title mb-2">Status</h5>
+                                <p id="upcoming">Upcoming</p>
+                            </div>
+
+                            <!--Order ID-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Order ID</h5>
+                                <p>43252</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Event Booking History Card-->
+            <div class="eventbooking container-fluid border mb-4">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="eventdetails.html"><img src="static/img/flowerexhibition.jpg" class="bookingpic img-fluid rounded-start" alt="Flower artwork at an art exhibition."></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="bookingdetails row">
+                            <div class="eventname col-12 col-sm-6">
+                                <h4><a href="eventdetails.html" class="titlelink">'Art of the Flower' Exhibition'</a></h4>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                    </svg>
+                                    345 Morris Street, South Bank, 4101
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                    </svg>
+                                    $20
+                                </div>
+                                <div class="mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                                        <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z"/>
+                                    </svg>
+                                    1x Early Bird Ticket
+                                </div>
+                            </div>
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Event Date</h5>
+                                <p class="card-text mb-0">30th May, 2024</p>
+                                <p class="card-text">8am - 8pm</p>
+                                <h5 class="card-title mb-2">Status</h5>
+                                <p id="upcoming">Upcoming</p>
+                            </div>
+
+                            <!--Order ID-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Order ID</h5>
+                                <p>97349</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Event Booking History Card-->
+            <div class="eventbooking container-fluid border mb-4">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="eventdetails.html"><img src="static/img/resinworkshop.png" class="bookingpic img-fluid rounded-start" alt="Several resin keychains with flowers inside."></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="bookingdetails row">
+                            <div class="eventname col-12 col-sm-6">
+                                <h4><a href="eventdetails.html" class="titlelink">Resin Keychain Workshop</a></h4>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                    </svg>
+                                    13 Lilypad Street, West End, 4101
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                    </svg>
+                                    $80
+                                </div>
+                                <div class="mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                                        <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z"/>
+                                    </svg>
+                                    2x General Tickets
+                                </div>
+                            </div>
+                            
+                            <!--Event Date & Status-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Event Date</h5>
+                                <p class="card-text mb-0">14th July, 2024</p>
+                                <p class="card-text">12pm to 4pm</p>
+                                <h5 class="card-title mb-2">Status</h5>
+                                <p id="upcoming">Upcoming</p>
+                            </div>
+
+                            <!--Order ID-->
+                            <div class="eventdate col-6 col-sm-3">
+                                <h5 class="card-title">Order ID</h5>
+                                <p>26483</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Page Navigation-->
+            <div class="pagenav">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                        <a class="page-link text-muted" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link text-muted" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <div class="footer container-fluid">
+            <footer class="row row-cols-1 row-cols-sm-3 row-cols-md-3 p-5">
+            <div class="col">
+                <h2 class="fs-1">craft unity events.</h2>
+                <p class="text-muted">© Craft Unity Events.</p>
+            </div>
+            
+
+            <div class="col">
+                <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Home</a></li>
+                <li class="nav-item mb-2"><a href="eventcreation.html" class="nav-link p-0 text-muted">Create Events</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                </ul>
+            </div>
+        
+            <div class="col">
+                <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Profile</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sign up</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Log In</a></li>
+                <li class="nav-item mb-2"><a href="userbookinghistory.html" class="nav-link p-0 text-muted">Booking History</a></li>
+                </ul>
+            </div>
+            </footer>
+        </div>
+    </body>
