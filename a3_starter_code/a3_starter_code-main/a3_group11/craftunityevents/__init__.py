@@ -30,5 +30,8 @@ def create_app():
 
     from . import events
     app.register_blueprint(events.destbp)
-    
+
+    from .events import destbp as events_blueprint
+    app.register_blueprint(events_blueprint)
+
     return app
