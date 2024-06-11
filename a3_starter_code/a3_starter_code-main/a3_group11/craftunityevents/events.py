@@ -58,29 +58,59 @@ def create():
 def update_event(id):
     event = Event.query.get_or_404(id)
 
-# Only allow the event creator to edit this event
-if event.created_by != current_user.id:
-    flash('Sorry, you do not have permission to edit this event.')
-    return redirect(url_for('event.show', id=id))
+    # Check if the current user is the creator of the event
+    if event.user_id != current_user.id:
+        flash('You do not have permission to edit this event.')
+        return redirect(url_for('event.show', id=id))
 
-form = UpdateEventForm(obj=event)
-if form.validate_on_submit():
-    event_name=form.name.data,
-    category=form.category.data,
-    start_time=form.start_time.data,
-    end_time=form.end_time.data,
-    start_date=form.start_date.data,
-    end_date=form.end_date.data,
-    location=form.location.data,
-    image=db_file_path,
-    description=form.description.data,
-    price=form.price.data,
-    num_tickets=form.num_tickets.data,
-    created_by=current_user.id
+    form = EventForm(obj=event)  # Pre-populate the form with the event's data
 
-db.session.commit()
-flash('Your event has been updated!', 'success')
-return redirect(url_for('event.show', id=id))
+    if form.validate_on_submit():
+        update_event_from_form(event, form)
+        if save_event(event):
+            flash('Event updated successfully.')
+            return redirect(url_for('main.index'))
+        else:
+            flash('An error occurred. Event update failed.')
+    else:
+        print(form.errors)
+
+    return render_template('events/updateEvent.html', form=form, event=event)
+
+def update_event_from_form(event, form):
+    """Update event object with data from the form."""
+    event.name = form.name.data
+    event.location = form.location.data
+    event.start_date = form.start_date.data
+    event.end_date = form.end_date.data
+    event.start_time = form.start_time.data
+    event.end_time = form.end_time.data
+    event.ga_price = form.ga_price.data
+    event.ga_availability = form.ga_availability.data
+    event.concession_price = form.concession_price.data
+    event.concession_availability = form.concession_availability.data
+    event.vip_price = form.vip_price.data
+    event.vip_availability = form.vip_availability.data
+    event.description = form.description.data
+    if form.image.data:  # Check if the image file has been updated
+        new_image_filename = save_image(form.image.data)
+        if new_image_filename:
+            event.image = new_image_filename
+    event.category = form.category.data
+    event.event_guidelines = form.event_guidelines.data
+    event.terms_conditions = form.terms_conditions.data
+
+
+def save_event(event):
+    """Attempt to save the event to the database."""
+    try:
+        db.session.commit()
+        print("Successful update!")
+        return True
+    except Exception as e:
+        print("Error updating event:", e)
+        db.session.rollback()
+        return False
 
 # Cancel Event
 @destbp.route('/cancel/<int:id>', methods=['POST'])
