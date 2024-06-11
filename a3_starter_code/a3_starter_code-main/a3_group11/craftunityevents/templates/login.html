@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 col-sm-6">
+            <!--image will go here-->
+            <img src="demo1.jpeg" class="img-responsive" id="login_dis">
+        </div>
+        <div class="col-md-4 col-sm-6">
+        <h5 class="font-weight-bold text-center" style="margin-top: 3rem;">Sign in</h5>
+            <form>
+                <div class="mb-3">
+                <label for="RegisterEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Email address">
+                </div>
+                <div class="mb-3">
+                <label for="registerPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                </div>
+                <div class="mb-3 text-center p-1" style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" id="SignUp-button">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
