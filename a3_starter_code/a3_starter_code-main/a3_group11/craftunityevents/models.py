@@ -32,7 +32,7 @@ class Event(db.Model):
     image = db.Column(db.String(400))
     price = db.Column(db.Integer, nullable=False)
     num_tickets = db.Column(db.Integer, nullable=False)
-    created_by = db.Column(Integer, db.ForeignKey('user.id')
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
     comments = db.relationship('Comment', backref='event', lazy=True)
     bookings = db.relationship('Booking', backref='event', lazy=True)
 
