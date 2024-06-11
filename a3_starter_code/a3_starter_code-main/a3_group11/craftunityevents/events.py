@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .models import Event, Comment
+from .models import Event, Comment, Booking, User
 from .forms import LoginForm, RegisterForm, CommentForm, EventForm, UpdateEventForm
 from . import db
 import os
@@ -125,6 +125,13 @@ def book_event(id):
     if event.status != 'Open':
         flash('Sorry, this event is not available for booking.', 'info')
         return redirect(url_for('event.show', id=id))
+    
+# Booking History
+@destbp.route('/userbookinghistory')
+@login_required
+def userbookinghistory():
+    bookings = Booking.query.filter_by(user_id=current_user.id).all()
+    return render_template('userbookinghistory.html', bookings=bookings)
 
     #form = OrderForm()
     #if form.validate_on_submit():
