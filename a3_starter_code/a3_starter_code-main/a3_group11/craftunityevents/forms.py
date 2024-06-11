@@ -29,7 +29,6 @@ class RegisterForm(FlaskForm):
 
 # User comment
 class CommentForm(FlaskForm):
-    id = db.Column(db.Integer, primary_key=True)
     text = TextAreaField('Comment', [InputRequired("Type your comment...")])
     submit = SubmitField('Post Comment')
 
@@ -38,7 +37,6 @@ ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 
 # Create an event
 class EventForm(FlaskForm):
-    id = db.Column(db.Integer, primary_key=True)
     event_name = StringField("Event Name", validators=[InputRequired('Type your event name')])
     event_category = RadioField('Event Category', choices=[
         ('Workshop', 'Workshop'),
