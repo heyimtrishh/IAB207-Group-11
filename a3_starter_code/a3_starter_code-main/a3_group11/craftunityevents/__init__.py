@@ -23,9 +23,9 @@ def create_app():
         return User.query.get(int(user_id))
 
     from .views import main_bp
-    app.register_blueprint(main_bp)
+    app.register_blueprint(mainbp)
 
     from .auth import auth_bp
-    app.register_blueprint(auth_bp)
+    app.register_blueprint(authbp)
     
     return app
