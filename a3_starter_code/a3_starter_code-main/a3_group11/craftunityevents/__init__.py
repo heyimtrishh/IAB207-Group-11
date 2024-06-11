@@ -28,9 +28,6 @@ def create_app():
     from .auth import authbp
     app.register_blueprint(authbp)
 
-    from . import events
-    app.register_blueprint(events.destbp)
-
     from .events import destbp as events_blueprint
     app.register_blueprint(events_blueprint)
 
