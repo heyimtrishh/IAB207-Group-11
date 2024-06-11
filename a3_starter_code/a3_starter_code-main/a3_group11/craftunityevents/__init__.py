@@ -27,5 +27,11 @@ def create_app():
 
     from .auth import authbp
     app.register_blueprint(authbp)
+
+    from . import events
+    app.register_blueprint(events.bp)
+
+    from . import views
+    app.register_blueprint(views.bp)
     
     return app
