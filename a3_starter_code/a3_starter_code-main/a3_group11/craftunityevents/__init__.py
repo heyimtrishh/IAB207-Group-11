@@ -30,8 +30,5 @@ def create_app():
 
     from . import events
     app.register_blueprint(events.destbp)
-
-    from . import views
-    app.register_blueprint(views.destbp)
     
     return app
