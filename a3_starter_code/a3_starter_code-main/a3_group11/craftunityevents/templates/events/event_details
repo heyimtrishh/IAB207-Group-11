@@ -11,7 +11,7 @@
             <div class="image row g-0">
                 <!--Event Image-->
                 <div class="col-md-4">
-                    <img src="{{ event.image }}" class="eventimg" alt="People at pottery workshop">
+                    <img src="{{ event.image }}" class="eventimg" alt="Image of event">
                 </div>
                 <!--Event Detail-->
                 <div class="col-md-8">
