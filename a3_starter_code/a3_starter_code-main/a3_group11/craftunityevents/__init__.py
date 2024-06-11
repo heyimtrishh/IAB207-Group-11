@@ -22,7 +22,7 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    from .views import main_bp
+    from .views import mainbp
     app.register_blueprint(mainbp)
 
     from .auth import auth_bp
