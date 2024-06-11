@@ -9,7 +9,7 @@ def create_app():
     app = Flask(__name__)
     app.debug = True
     app.secret_key = 'somesecretkey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eventdata.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eventdata.db'
     db.init_app(app)
     Bootstrap5(app)
 
