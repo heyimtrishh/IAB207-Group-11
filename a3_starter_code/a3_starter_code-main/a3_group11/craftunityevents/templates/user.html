@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap5/form.html" as wtf %}
 
 <!-- Title -->
 {% block title %} - {{ heading }} {% endblock %}
@@ -37,9 +37,9 @@
             <!-- Display a link to the Login page if user is on Register page -->
             <!-- Display a link to the Register page if user is on Log In page -->
             {% if heading|lower == "register" %}
-            <a href="{{ url_for('main.login') }}" class="text-center">Sign In Now</a>
+            <a href="{{ url_for('auth.login') }}" class="text-center">Sign In Now</a>
             {% else %}
-            <a href="{{ url_for('main.register') }}" class="text-center">Don't have an account?</a>
+            <a href="{{ url_for('auth.register') }}" class="text-center">Don't have an account?</a>
             {% endif %}
         </div>
     </div>
