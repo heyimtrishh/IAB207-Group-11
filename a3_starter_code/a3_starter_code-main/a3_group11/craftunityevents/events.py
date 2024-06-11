@@ -61,7 +61,7 @@ def update_event(id):
 # Only allow the event creator to edit this event
 if event.created_by != current_user.id:
     flash('Sorry, you do not have permission to edit this event.')
-    return redirect(url_for('event.show', id=id)
+    return redirect(url_for('event.show', id=id))
 
 form = UpdateEventForm(obj=event)
 if form.validate_on_submit():
