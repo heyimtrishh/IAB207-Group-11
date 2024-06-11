@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import Event, Comment
-from .forms import LoginForm, RegisterForm, CommentForm, EventForm, EditEventForm
+from .forms import LoginForm, RegisterForm, CommentForm, EventForm, UpdateEventForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -118,19 +118,19 @@ def book_event(id):
         flash('Sorry, this event is not available for booking.', 'info')
         return redirect(url_for('event.show', id=id))
 
-    form = OrderForm()
-    if form.validate_on_submit():
-        order = Order(
-            user_id=current_user.id,
-            event_id=event.id,
-            quantity=form.quantity.data,
-            order_date=datetime.now()
-        )
-        db.session.add(order)
-        db.session.commit()
-        flash(f'Tickets booked successfully! Your Order ID is: {order.id}', 'success')
-        return redirect(url_for('event.show', id=id))
-    return render_template('events/book.html', form=form, event=event)
+    #form = OrderForm()
+    #if form.validate_on_submit():
+     #   order = Order(
+      #      user_id=current_user.id,
+       #     event_id=event.id,
+        #    quantity=form.quantity.data,
+         #   order_date=datetime.now()
+        #)
+        #db.session.add(order)
+        #db.session.commit()
+        #flash(f'Tickets booked successfully! Your Order ID is: {order.id}', 'success')
+        #return redirect(url_for('event.show', id=id))
+    #return render_template('events/book.html', form=form, event=event)
 
 # Comment on Event Details Page
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])
