@@ -62,7 +62,7 @@ class EventForm(FlaskForm):
     submit = SubmitField("Create Event")
 
 # Edit an event
-class EditEventForm(FlaskForm):  # Changed class name to avoid duplication
+class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
     event_name = StringField("Event Name", validators=[InputRequired('Type your event name')])
     event_category = RadioField('Event Category', choices=[
         ('Workshop', 'Workshop'),
