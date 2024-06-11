@@ -9,7 +9,7 @@ def create_app():
     app = Flask(__name__)
     app.debug = True
     app.secret_key = 'somesecretkey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sitedata.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eventdata.sqlite'
     db.init_app(app)
     Bootstrap5(app)
 
@@ -25,7 +25,7 @@ def create_app():
     from .views import mainbp
     app.register_blueprint(mainbp)
 
-    from .auth import auth_bp
+    from .auth import authbp
     app.register_blueprint(authbp)
     
     return app
