@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     contact_number = db.Column(db.Integer, index=True, nullable=False)
     email_id = db.Column(db.String(100), index=True, nullable=False)
     address = db.Column(db.String(100), index=True, nullable=False)
-    password_hash = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(400), nullable=False)
     
     # Relationships
     comments = db.relationship('Comment', backref='user', lazy=True)
@@ -47,8 +47,8 @@ class Event(db.Model):
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(400))
-    posted_at = db.Column(db.DateTime, default=datetime.now)
+    text = db.Column(db.String(400), nullable=False)
+    posted_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
@@ -59,12 +59,12 @@ class Booking(db.Model):
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(100), nullable=False)
-    num_tickets = db.Column(db.Integer, index=True, nullable=False)
-    price = db.Column(db.Float, nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.now, nullable=False)
-    time = db.Column(db.String(20), nullable=False)
-    location = db.Column(db.String(200), nullable=False)
+    event_price = db.Column(db.Float, nullable=False)
+    event_quantity = db.Column(db.Integer, nullable=False)
+    event_date = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    start_time = db.Column(db.String(20), nullable=False)
+    end_time = db.Column(db.String(20), nullable=False)
+    event_location = db.Column(db.String(200), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('booking_statuses.id'), nullable=False)
