@@ -411,17 +411,46 @@ main {
     background-color: #ebebeb;
     border-radius: 8px;
     padding: 5vw;
+    margin-bottom: 20px; /* Added margin for better spacing */
 }
 
 .eventcreatecard label {
     font-weight: 700;
     font-size: larger;
+    display: flex;
+    align-items: center; /* Aligns icons and text vertically */
+    margin-bottom: 10px; /* Adds space between label and input */
 }
 
 .eventcreatecard legend {
     font-weight: 800;
     font-size: xx-large;
+    margin-bottom: 20px; /* Added margin for better spacing */
 }
+
+.eventcreatecard svg {
+    margin-right: 8px; /* Adds space between the icon and the text */
+}
+
+/* Form Elements */
+.eventrow {
+    margin-bottom: 20px; /* Adds space between form elements */
+}
+
+.eventrow label {
+    display: block; /* Ensures label and input are on separate lines */
+    margin-bottom: 5px; /* Adds space between label and input */
+}
+
+.eventrow input,
+.eventrow select,
+.eventrow textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
 
 /* Booking History */
 .eventbooking {
