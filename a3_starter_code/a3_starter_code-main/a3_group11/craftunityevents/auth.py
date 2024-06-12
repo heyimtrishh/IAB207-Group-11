@@ -18,6 +18,8 @@ def register():
             uname = register.user_name.data
             pwd = register.password.data
             email = register.email_id.data
+            contact_number = register.contact_number.data
+            address = register.address.data
             #check if a user exists
             user = db.session.scalar(db.select(User).where(User.full_name==uname))
             if user:#this returns true when user is not None
@@ -26,7 +28,7 @@ def register():
             # don't store the password in plaintext!
             pwd_hash = generate_password_hash(pwd)
             #create a new User model object
-            new_user = User(full_name=uname, password_hash=pwd_hash, email_id=email)
+            new_user = User(full_name=uname, password_hash=pwd_hash, email_id=email, contact_number=contact_number, address=address)
             db.session.add(new_user)
             db.session.commit()
             #commit to the database and redirect to HTML page
