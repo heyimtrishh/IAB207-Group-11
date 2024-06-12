@@ -214,6 +214,11 @@ main {
     padding: 50px 0px;
 }
 
+.form-control {
+    width: 300px !important; 
+    max-width: 100% !important; 
+}
+
 .alert-dismissible {
     margin: 0px !important;
     font-weight: 800;

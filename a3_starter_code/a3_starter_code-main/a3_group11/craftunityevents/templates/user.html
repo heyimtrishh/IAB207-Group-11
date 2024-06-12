@@ -11,17 +11,17 @@
         <div class="account-box">
             <h2>{{ heading }}</h2>
 
-            <form method="post">
+            <form method="post" class="fixed-width">
                 {{ form.csrf_token }}
-                {{ wtf.render_form(form) }}
+                {{ wtf.render_form(form, form_type='floating') }}
             </form>
 
             <!-- Display a link to the Login page if user is on Register page -->
             <!-- Display a link to the Register page if user is on Log In page -->
             {% if heading|lower == "register" %}
-            <a href="{{ url_for('auth.login') }}" class="text-center">Sign In Now</a>
+            <a href="{{ url_for('auth.login') }}" class="text-center mt-3">Sign In Now</a>
             {% else %}
-            <a href="{{ url_for('auth.register') }}" class="text-center">Don't have an account?</a>
+            <a href="{{ url_for('auth.register') }}" class="text-center mt-3">Don't have an account?</a>
             {% endif %}
         </div>
     </div>
