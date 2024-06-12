@@ -231,7 +231,7 @@ main {
 }
 
 .sign-in {
-    padding-top: 3px;
+    padding-top: 3px !important;
 }
 
 .exploremore {
