@@ -47,7 +47,7 @@ main {
 
 .site-name {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 700 !important;
     color: black;
     text-decoration: none;
     margin: 0px 10px;
@@ -221,7 +221,7 @@ main {
 
 .alert-dismissible {
     margin: 0px !important;
-    font-weight: 800;
+    font-weight: 700;
     padding: 0px 12px;
     font-size: 20px;
 }
