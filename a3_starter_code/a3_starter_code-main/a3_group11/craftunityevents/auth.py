@@ -13,13 +13,13 @@ authbp = Blueprint('auth', __name__ )
 def register():
     register = RegisterForm()
     #the validation of form is fine, HTTP request is POST
-    if (register.validate_on_submit()==True):
+    if register.validate_on_submit():
             #get username, password and email from the form
             uname = register.user_name.data
             pwd = register.password.data
             email = register.email_id.data
             #check if a user exists
-            user = db.session.scalar(db.select(User).where(User.name==uname))
+            user = db.session.scalar(db.select(User).where(User.full_name==uname))
             if user:#this returns true when user is not None
                 flash('Username already exists, please try another')
                 return redirect(url_for('auth.register'))
