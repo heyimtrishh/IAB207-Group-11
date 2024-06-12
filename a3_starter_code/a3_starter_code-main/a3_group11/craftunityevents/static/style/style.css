@@ -218,6 +218,11 @@ main {
     margin: 0px !important;
     font-weight: 800;
     padding: 0px 16px;
+    font-size: 20px;
+}
+
+.alert-dismissible .btn-close {
+    padding: 0px;
 }
 
 .exploremore {
