@@ -45,9 +45,9 @@ main {
     background-color: antiquewhite !important;
 }
 
-.site-name {
+.navbar-brand {
     font-size: 25px;
-    font-weight: 700 !important;
+    font-weight: 700;
     color: black;
     text-decoration: none;
     margin: 0px 10px;
