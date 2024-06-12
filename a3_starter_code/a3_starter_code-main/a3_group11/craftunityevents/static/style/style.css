@@ -216,6 +216,8 @@ main {
 
 .alert-dismissible {
     margin: 0px !important;
+    font-weight: 800;
+    padding: 0px 16px;
 }
 
 .exploremore {
