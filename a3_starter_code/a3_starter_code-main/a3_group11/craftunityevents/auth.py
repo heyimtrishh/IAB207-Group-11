@@ -26,7 +26,7 @@ def register():
             # don't store the password in plaintext!
             pwd_hash = generate_password_hash(pwd)
             #create a new User model object
-            new_user = User(name=uname, password_hash=pwd_hash, emailid=email)
+            new_user = User(full_name=uname, password_hash=pwd_hash, emailid=email)
             db.session.add(new_user)
             db.session.commit()
             #commit to the database and redirect to HTML page

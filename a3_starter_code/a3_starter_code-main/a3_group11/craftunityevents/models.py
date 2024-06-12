@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     created_event = db.relationship('Event', backref='user', lazy=True)
 
     def __repr__(self):
-        return f"Name: {self.name}"
+        return f"Name: {self.full_name}"
 
 class Event(db.Model):
     __tablename__ = 'events'
