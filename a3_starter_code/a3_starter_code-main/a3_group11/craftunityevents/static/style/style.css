@@ -51,7 +51,7 @@ main {
 
 /* Nav Bar */
 .navbar {
-    background-color: antiquewhite;
+    background-color: antiquewhite !important;
 }
 
 .site-name {
