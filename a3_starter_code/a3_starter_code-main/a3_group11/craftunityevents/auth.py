@@ -46,10 +46,10 @@ def login():
         user = db.session.scalar(db.select(User).where(User.full_name==user_name))
         #if there is no user with that name
         if user is None:
-            error = 'Incorrect username'#could be a security risk to give this much info away
+            error = 'Incorrect username, please try again.'#could be a security risk to give this much info away
         #check the password - notice password hash function
         elif not check_password_hash(user.password_hash, password): # takes the hash and password
-            error = 'Incorrect password'
+            error = 'Incorrect password, please try again.'
         if error is None:
             #all good, set the login_user of flask_login to manage the user
             login_user(user)
