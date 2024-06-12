@@ -14,9 +14,6 @@
             <form method="post">
                 {{ form.csrf_token }}
                 {{ wtf.render_form(form) }}
-                <div class="d-flex justify-content-center">
-                    {{ form.submit(class="btn btn-primary py-2 my-3", id="submit") }}
-                </div>
             </form>
 
             <!-- Display a link to the Login page if user is on Register page -->
