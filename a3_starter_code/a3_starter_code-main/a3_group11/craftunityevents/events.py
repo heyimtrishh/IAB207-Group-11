@@ -14,7 +14,7 @@ def show(id):
     event = db.session.scalar(db.select(Event).where(Event.id == id))
     # create the comment form
     form = CommentForm()
-    return render_template('events/show.html', event=event, form=form)
+    return render_template('event_details.html', event=event, form=form)
 
 # Event Details
 @destbp.route('/event/<id>')
@@ -22,7 +22,7 @@ def event_details(id):
     print(f"Event ID: {id}")
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
-    return render_template('eventDetails.html', event=event, form=comment_form)
+    return render_template('event_details.html', event=event, form=comment_form)
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
@@ -54,7 +54,7 @@ def create():
         flash(f'Successfully created new event for {event.event_name}!', 'success')
         # Always end with redirect when form is valid
         return redirect(url_for('event.create'))
-    return render_template('events/create.html', form=form)
+    return render_template('events/create_event.html', form=form)
 
 # Update Event as Event Creator
 @destbp.route('/<id>/update', methods=['GET', 'POST'])
