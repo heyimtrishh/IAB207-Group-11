@@ -209,8 +209,13 @@ main {
     padding-top: 40px 0px;
 }
 
+/* New CSS Added */
 .account-box {
     padding: 50px 0px;
+}
+
+.custom-padding {
+    padding: 20px; 
 }
 
 .exploremore {

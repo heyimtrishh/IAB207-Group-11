@@ -55,7 +55,7 @@ def login():
             login_user(user)
             return redirect(url_for('main.index'))
         else:
-            flash(error)
+            flash(error, 'custom-flash-message')
     return render_template('user.html', form=login_form, heading='Login')
 
 @authbp.route('/logout')
