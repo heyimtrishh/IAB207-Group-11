@@ -222,7 +222,7 @@ main {
 }
 
 .alert-dismissible .btn-close {
-    padding: 0px;
+    padding: 0px 12px;
 }
 
 .exploremore {
