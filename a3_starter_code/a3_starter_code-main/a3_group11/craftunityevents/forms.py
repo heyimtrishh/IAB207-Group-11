@@ -24,6 +24,7 @@ class RegisterForm(FlaskForm):
     ])
     confirm = PasswordField("Confirm Password")
     # Submit button
+    submit = SubmitField("Register")
 
 # User comment
 class CommentForm(FlaskForm):
