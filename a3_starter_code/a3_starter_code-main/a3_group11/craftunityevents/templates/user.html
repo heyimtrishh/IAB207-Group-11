@@ -19,9 +19,9 @@
             <!-- Display a link to the Login page if user is on Register page -->
             <!-- Display a link to the Register page if user is on Log In page -->
             {% if heading|lower == "register" %}
-            <a href="{{ url_for('auth.login') }}" class="sign-in text-center">Already have an account? Sign In Now</a>
+            <a href="{{ url_for('auth.login') }}" class="sign-in">Already have an account? Sign In Now</a>
             {% else %}
-            <a href="{{ url_for('auth.register') }}" class="sign-in text-center">Don't have an account?</a>
+            <a href="{{ url_for('auth.register') }}" class="sign-in">Don't have an account?</a>
             {% endif %}
         </div>
     </div>
