@@ -47,7 +47,7 @@
             <div class="row mt-3 mb-3">
                 <div class="col-md-12">
                     {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} custom-padding" role="alert">
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
