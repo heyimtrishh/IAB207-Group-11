@@ -11,9 +11,9 @@
         <div class="account-box">
             <h2>{{ heading }}</h2>
 
-            <form method="post">
+            <form method="post" class="fixed-width">
                 {{ form.csrf_token }}
-                {{ wtf.render_form(form, form_type='floating', class_='custom-width') }}
+                {{ wtf.render_form(form, form_type='floating') }}
             </form>
 
             <!-- Display a link to the Login page if user is on Register page -->
