@@ -211,7 +211,7 @@ main {
 
 /* New CSS Added */
 .account-box {
-    padding: 50px 0px;
+    padding: 50px 10px;
 }
 
 .form-control {
@@ -228,6 +228,10 @@ main {
 
 .alert-dismissible .btn-close {
     padding: 5px 12px;
+}
+
+.sign-in {
+    padding-top: 3px;
 }
 
 .exploremore {
