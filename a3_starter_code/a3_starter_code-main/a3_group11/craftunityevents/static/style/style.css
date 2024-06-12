@@ -209,6 +209,10 @@ main {
     padding-top: 40px 0px;
 }
 
+.account-box {
+    padding: 0px 50px;
+}
+
 .exploremore {
     align-content: center;
     padding: 0px 20px !important;

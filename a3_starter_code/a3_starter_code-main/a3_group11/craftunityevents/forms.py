@@ -11,7 +11,6 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired('Enter user name')])
     password = PasswordField("Password", validators=[InputRequired('Enter user password')])
-    submit = SubmitField("Login")
 
 # This is the registration form
 class RegisterForm(FlaskForm):
