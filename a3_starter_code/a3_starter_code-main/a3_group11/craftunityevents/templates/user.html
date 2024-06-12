@@ -13,13 +13,13 @@
 
             <form method="post" class="fixed-width">
                 {{ form.csrf_token }}
-                {{ wtf.render_form(form, form_type='floating') }}
+                {{ wtf.render_form(form) }}
             </form>
 
             <!-- Display a link to the Login page if user is on Register page -->
             <!-- Display a link to the Register page if user is on Log In page -->
             {% if heading|lower == "register" %}
-            <a href="{{ url_for('auth.login') }}" class="sign-in text-center">Sign In Now</a>
+            <a href="{{ url_for('auth.login') }}" class="sign-in text-center">Already have an account? Sign In Now</a>
             {% else %}
             <a href="{{ url_for('auth.register') }}" class="sign-in text-center">Don't have an account?</a>
             {% endif %}
