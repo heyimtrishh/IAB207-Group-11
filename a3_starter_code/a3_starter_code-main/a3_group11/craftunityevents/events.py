@@ -44,6 +44,9 @@ def create():
     if form.validate_on_submit():
         # call the function that checks and returns image
         db_file_path = check_upload_file(form)
+        print(db_file_path)
+
+        #Instantiate an Event object with the following form fields
         event = Event(
             event_name=form.event_name.data,
             category=form.event_category.data,
@@ -64,7 +67,7 @@ def create():
         db.session.commit()
         flash(f'Successfully created new event for {event.event_name}!', 'success')
         # Always end with redirect when form is valid
-        return redirect(url_for('event.create'))
+        return redirect(url_for('event.event_details', id=event.id))
     return render_template('events/create_event.html', form=form)
 
 # Update Event as Event Creator
