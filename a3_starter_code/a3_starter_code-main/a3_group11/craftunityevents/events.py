@@ -17,25 +17,22 @@ def details(id):
     return render_template('events/event_details.html', event=event, comment_form=comment_form)
 
 # Comment on Event Details Page
-@destbp.route('/<id>/comment', methods=['GET', 'POST'])
+@destbp.route('/<int:id>/comment', methods=['POST'])
 @login_required
-def comment(event_id):
+def comment(id):
     comment_form = CommentForm()
-    # get the event object associated to the page and the comment
     event = db.session.scalar(db.select(Event).where(Event.id == id))
+    if event is None:
+        flash('Event not found', 'danger')
+        return redirect(url_for('main.index'))
     if comment_form.validate_on_submit():
-        # read the comment from the form
-        comment = Comment(text=comment_form.comment.data, event_id=event_id, user_id=current_user.id)
-        # here the back-referencing works - comment.event is set
-        # and the link is created
+        comment = Comment(text=comment_form.text.data, event_id=id, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-        # flashing a message which needs to be handled by the html
         flash('Your comment has been added!', 'success')
-        # using redirect sends a GET request to event.show
-        return redirect(url_for('event.details', id=id))
-    return render_template('events/event_details.html', event=event, comment_form=comment_form)
-
+    else:
+        flash('Error in form submission', 'danger')
+    return redirect(url_for('event.details', id=id))
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
 @login_required
