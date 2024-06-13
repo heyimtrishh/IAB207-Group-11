@@ -10,7 +10,7 @@ from datetime import datetime
 destbp = Blueprint('event', __name__, url_prefix='/events')
 
 # Event Details Page 
-@destbp.route('/event/<int:id>')
+@destbp.route('/<id>')
 def details(id):
     print(f"Fetching event with id {id}")
     event = db.session.scalar(db.select(event).where(event.id==id))
