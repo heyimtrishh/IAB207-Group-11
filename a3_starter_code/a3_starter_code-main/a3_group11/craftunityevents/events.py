@@ -3,7 +3,6 @@ from .models import Event, Comment, Booking, User
 from .forms import LoginForm, RegisterForm, CommentForm, EventForm, UpdateEventForm
 from . import db
 import os
-import logging
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from datetime import datetime
@@ -13,11 +12,29 @@ destbp = Blueprint('event', __name__, url_prefix='/events')
 # Event Details Page 
 @destbp.route('/event/<int:id>')
 def details(id):
-    logging.debug(f"Fetching event with id {id}")
-    logging.debug(f"Fetched event: {event}")
+    print(f"Fetching event with id {id}")
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
     return render_template('events/event_details.html', event=event, form=comment_form)
+
+# Comment on Event Details Page
+@destbp.route('/<id>/comment', methods=['GET', 'POST'])
+@login_required
+def comment(event_id):
+    form = CommentForm()
+    # get the event object associated to the page and the comment
+    event = db.session.scalar(db.select(Event).where(Event.id == id))
+    if form.validate_on_submit():
+        # read the comment from the form
+        comment = Comment(text=form.comment.data, event_id=event_id, user_id=current_user.id)
+        # here the back-referencing works - comment.event is set
+        # and the link is created
+        db.session.add(comment)
+        db.session.commit()
+        # flashing a message which needs to be handled by the html
+        flash('Your comment has been added!', 'success')
+        # using redirect sends a GET request to event.show
+        return redirect(url_for('event.details', id=id))
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
@@ -59,7 +76,7 @@ def update_event(id):
     # Only allow the event creator to edit this event
     if event.created_by != current_user.id:
         flash('Sorry, you do not have permission to edit this event.')
-        return redirect(url_for('event.show', id=id))
+        return redirect(url_for('event.details', id=id))
 
     form = UpdateEventForm(obj=event)
     if form.validate_on_submit():
@@ -78,7 +95,7 @@ def update_event(id):
         event.num_tickets = form.ticket_quantity.data
         db.session.commit()
         flash('Your event has been updated!', 'success')
-        return redirect(url_for('event.show', id=id))
+        return redirect(url_for('event.details', id=id))
 
     return render_template('events/update.html', form=form, event=event)
 
@@ -90,11 +107,11 @@ def cancel_event(id):
     # Only Event Creator Can Cancel Event
     if event.created_by != current_user.id:
         flash('Sorry, you do not have permission to cancel this event.')
-        return redirect(url_for('event.show', id=id))
+        return redirect(url_for('event.details', id=id))
     event.status = 'Cancelled'
     db.session.commit()
     flash(f'The event {event.event_name} has been cancelled.', 'info')
-    return redirect(url_for('event.show', id=id))
+    return redirect(url_for('event.details', id=id))
 
 # File Upload
 def check_upload_file(form):
@@ -119,14 +136,14 @@ def book_event(id):
     # No Tickets Available 
     if event.status != 'Open':
         flash('Sorry, this event is not available for booking.', 'info')
-        return redirect(url_for('event.show', id=id))
+        return redirect(url_for('event.details', id=id))
     
 # Booking History
 @destbp.route('/userbookinghistory')
 @login_required
 def userbookinghistory():
     bookings = Booking.query.filter_by(user_id=current_user.id).all()
-    return render_template('userbookinghistory.html', bookings=bookings)
+    return render_template('events/userbookinghistory.html', bookings=bookings)
 
     #form = OrderForm()
     #if form.validate_on_submit():
@@ -141,26 +158,6 @@ def userbookinghistory():
         #flash(f'Tickets booked successfully! Your Order ID is: {order.id}', 'success')
         #return redirect(url_for('event.show', id=id))
     #return render_template('events/book.html', form=form, event=event)
-
-# Comment on Event Details Page
-@destbp.route('/<id>/comment', methods=['GET', 'POST'])
-@login_required
-def comment(id):
-    form = CommentForm()
-    # get the event object associated to the page and the comment
-    event = db.session.scalar(db.select(Event).where(Event.id == id))
-    if form.validate_on_submit():
-        # read the comment from the form
-        comment = Comment(text=form.comment.data, event=event, user=current_user)
-        # here the back-referencing works - comment.event is set
-        # and the link is created
-        db.session.add(comment)
-        db.session.commit()
-        # flashing a message which needs to be handled by the html
-        flash('Your comment has been added!', 'success')
-        # using redirect sends a GET request to event.show
-        return redirect(url_for('event.show', id=id))
-    return render_template('events/show.html', event=event, form=form)
 
 # Error Handlers
 @destbp.errorhandler(404)
