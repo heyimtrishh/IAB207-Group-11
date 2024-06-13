@@ -32,7 +32,7 @@
             <div class="col-md">
                 <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ event.event_thumbnail }}" class="imagehover" alt="Event Image"></a>
                 <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
-                <h4 class="fs-6">{{ event.status }}</h4>
+                <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
@@ -61,7 +61,7 @@
             <div class="col-md">
                 <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ event.event_thumbnail }}" class="imagehover" alt="Event Image"></a>
                 <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
-                <h4 class="fs-6">{{ event.status }}</h4>
+                <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
@@ -90,7 +90,7 @@
             <div class="col-md">
                 <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ event.event_thumbnail }}" class="imagehover" alt="Event Image"></a>
                 <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
-                <h4 class="fs-6">{{ event.status }}</h4>
+                <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
@@ -119,7 +119,7 @@
             <div class="col-md">
                 <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ event.event_thumbnail }}" class="imagehover" alt="Event Image"></a>
                 <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
-                <h4 class="fs-6">{{ event.status }}</h4>
+                <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
