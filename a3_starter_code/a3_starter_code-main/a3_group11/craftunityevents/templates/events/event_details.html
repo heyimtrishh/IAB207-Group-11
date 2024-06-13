@@ -121,58 +121,7 @@
             <p>{{ event.event_description }}</p>
         </section>
 
-        <!--Organiser's Profile-->
-        <section class="organiser container-fluid borders">
-            <hr class="my-4">
-            <h3>Organised By</h3>
-            <div class="usercommentcard card">
-                <div class="organiserbox card-body">
-                    <div class="row">
-                        <div class="pfp col-sm-3">
-                            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/organiserpfp.jpeg') }}" class="commentpfp">
-                        </div>
-                        <div class="organiserinfo col-sm-9">
-                            <h5>{{ event.user.full_name }}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!--Comment Section-->
-        <section class="comments container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h3>Comment Section</h3>
-                    <!--Comment Box-->
-                    <form class="commentbox was-validated" method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                        {{ form.hidden_tag() }}
-                        <div class="mb-3">
-                            {{ form.textarea(class="form-control is-invalid", placeholder="Type your comment...", required=True) }}
-                        </div>
-                        <div class="mb-3">
-                            <button class="bookbtn btn btn-dark shadow-none" type="submit">Post Comment</button>
-                        </div>
-                    </form>
-                    <!--Other Users' Comments-->
-                    {% for comment in event.comments %}
-                    <div class="usercommentcard card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-2 text-center">
-                                    <img class="commentpfp img-fluid flex-shrink-0 rounded-circle" src="{{ url_for('static', filename='img/default-profile.png') }}" style="width:70px">
-                                </div>
-                                <div class="col-10">
-                                    <h5>{{ comment.user.full_name }}</h5>
-                                    <p class="usercomment">{{ comment.text }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
     </section>
 </main>
 {% endblock %}
