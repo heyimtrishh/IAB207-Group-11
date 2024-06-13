@@ -56,12 +56,15 @@ class EventForm(FlaskForm):
         ("Recurring Event", "Recurring Event")
     ])
     start_date = DateField('Start Date', format='%Y-%m-%d', validators=[InputRequired()])
-    end_date = DateField('End Date',format='%Y-%m-%d', validators=[InputRequired()])
+    end_date = DateField('End Date', format='%Y-%m-%d', validators=[InputRequired()])
+    start_time = TimeField('Start Time', format='%H:%M', validators=[InputRequired()])  # Add this field if needed
+    end_time = TimeField('End Time', format='%H:%M', validators=[InputRequired()])  # Add this field if needed
     event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
     ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
     submit = SubmitField("Create Event")
+
 
 # Edit an event
 class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication

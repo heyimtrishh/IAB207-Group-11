@@ -35,44 +35,48 @@ def comment(event_id):
         # using redirect sends a GET request to event.show
         return redirect(url_for('event.details', id=id))
 
-# Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     print('Method type: ', request.method)
     form = EventForm()
+    
     if form.validate_on_submit():
-        # call the function that checks and returns image
-        db_file_path = check_upload_file(form)
-        print(db_file_path)
+        db_file_path = check_upload_file(form.event_thumbnail.data)
+        print(f"File path: {db_file_path}")
 
-        #Instantiate an Event object with the following form fields
-        event = Event(
-            event_name=form.event_name.data,
-            category=form.event_category.data,
-            start_time=form.start_time.data,
-            end_time=form.end_time.data,
-            start_date=form.start_date.data,
-            end_date=form.end_date.data,
-            location=form.event_location.data,
-            image=db_file_path,
-            description=form.event_description.data,
-            price=form.ticket_price.data,
-            num_tickets=form.ticket_quantity.data,
-            created_by=current_user.id
-        )
-        # add the object to the db session
-        db.session.add(event)
-        # commit to the database
-        db.session.commit()
-        flash(f'Successfully created new event for {event.event_name}!', 'success')
-        # Always end with redirect when form is valid
-        return redirect(url_for('event.event_details', id=event.id))
+        try:
+            # Instantiate an Event object with the following form fields
+            event = Event(
+                event_name=form.event_name.data,
+                category=form.event_category.data,
+                start_time=form.start_time.data,  # Ensure these fields are present in the form and model
+                end_time=form.end_time.data,  # Ensure these fields are present in the form and model
+                start_date=form.start_date.data,
+                end_date=form.end_date.data,
+                location=form.event_location.data,
+                image=db_file_path,
+                description=form.event_description.data,
+                price=form.ticket_price.data,
+                num_tickets=form.ticket_quantity.data,
+                created_by=current_user.id
+            )
+            # Add the object to the db session
+            db.session.add(event)
+            # Commit to the database
+            db.session.commit()
+            flash(f'Successfully created new event for {event.event_name}!', 'success')
+            return redirect(url_for('event.event_details', id=event.id))
+        except Exception as e:
+            db.session.rollback()
+            flash('An error occurred. Event creation failed.', 'danger')
+            print(f"Exception: {e}")
     else:
         print("Form not validated")
         for fieldName, errorMessages in form.errors.items():
             for err in errorMessages:
                 print(f"Error in {fieldName}: {err}")
+
     return render_template('events/create_event.html', form=form)
 
 # Update Event as Event Creator
