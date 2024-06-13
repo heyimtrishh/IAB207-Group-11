@@ -42,7 +42,7 @@ class Event(db.Model):
     event_bookings = db.relationship('Booking', backref='event', lazy=True)
 
     def __repr__(self):
-        return f"Event: {self.event_name}"
+        return f"Name: {self.name}"
 
 class Comment(db.Model):
     __tablename__ = 'comments'
