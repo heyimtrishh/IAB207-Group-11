@@ -15,7 +15,7 @@ def details(id):
     print(f"Fetching event with id {id}")
     events = db.session.scalar(db.select(events).where(events.event_id==id))
     comment_form = CommentForm()
-    return render_template('events/event_details.html', event=event, form=comment_form)
+    return render_template('events/event_details.html', events=events, form=comment_form)
 
 # Comment on Event Details Page
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])
