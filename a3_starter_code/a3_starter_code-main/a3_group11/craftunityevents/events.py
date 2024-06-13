@@ -10,7 +10,7 @@ from datetime import datetime
 destbp = Blueprint('event', __name__, url_prefix='/events')
 
 # Event Details Page 
-@destbp.route('/<int:id>')
+@destbp.route('/event/<int:id>')
 def event_details(id):
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
