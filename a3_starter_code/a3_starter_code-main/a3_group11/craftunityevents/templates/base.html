@@ -34,7 +34,7 @@
                             <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
                         {% endif %}
                         <a class="nav-item nav-link" href="{{ url_for('event.create') }}">Create Event</a>
-                        <a class="nav-item nav-link" href="#">Bookings</a>
+                        <a class="nav-item nav-link" href="{{ url_for('event.userbookinghistory') }}">Bookings</a>
                     </div>
                 </div>
             </div>
