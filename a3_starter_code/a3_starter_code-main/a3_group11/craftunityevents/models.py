@@ -42,7 +42,7 @@ class Event(db.Model):
     event_bookings = db.relationship('Booking', backref='event', lazy=True)
 
     def __repr__(self):
-        return f"Name: {self.event_name}"
+        return f"Name: {self.name}"
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -68,9 +68,6 @@ class Booking(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('booking_statuses.id'), nullable=False)
-
-    # Relationship
-    event = db.relationship('Event', back_populates='event_bookings', lazy=True)
 
     def __repr__(self):
         return f"Booking for event_id: {self.event_id}, user_id: {self.user_id}"
