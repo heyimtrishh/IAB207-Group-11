@@ -4,11 +4,6 @@ from . import db
 
 mainbp = Blueprint('main', __name__)
 
-@mainbp.route('/')
-def index():
-    event = db.session.scalars(db.select(Event)).all()    
-    return render_template('index.html', events=event)
-
 @mainbp.route('/search')
 def search():
     if request.args['search'] and request.args['search'] != "":
@@ -19,7 +14,7 @@ def search():
     else:
         return redirect(url_for('main.index'))
 
-@mainbp.route('/category')
+@mainbp.route('/')
 def index():
     events_upcoming = Event.query.filter(Event.start_date >= datetime.now()).all()
     events_exhibition = Event.query.filter(Event.event_category == 'Exhibition').all()
