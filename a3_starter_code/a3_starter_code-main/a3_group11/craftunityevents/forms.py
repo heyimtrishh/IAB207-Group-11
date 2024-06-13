@@ -55,8 +55,8 @@ class EventForm(FlaskForm):
         ("Single Event", "Single Event"),
         ("Recurring Event", "Recurring Event")
     ])
-    start_date = DateField('Start Date', validators=[InputRequired()], format='%Y-%m-%d')
-    end_date = DateField('End Date', validators=[InputRequired()], format='%Y-%m-%d')
+    start_date = DateField('Start Date', format='%Y-%m-%d', validators=[InputRequired()])
+    end_date = DateField('End Date',format='%Y-%m-%d', validators=[InputRequired()])
     event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
