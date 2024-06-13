@@ -3,6 +3,7 @@ from .models import Event, Comment, Booking, User
 from .forms import LoginForm, RegisterForm, CommentForm, EventForm, UpdateEventForm
 from . import db
 import os
+import logging
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from datetime import datetime
@@ -12,6 +13,8 @@ destbp = Blueprint('event', __name__, url_prefix='/events')
 # Event Details Page 
 @destbp.route('/event/<int:id>')
 def details(id):
+    logging.debug(f"Fetching event with id {id}")
+    logging.debug(f"Fetched event: {event}")
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
     return render_template('event_details.html', event=event, form=comment_form)
