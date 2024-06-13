@@ -17,7 +17,7 @@ def details(id):
     logging.debug(f"Fetched event: {event}")
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
-    return render_template('event_details.html', event=event, form=comment_form)
+    return render_template('events/event_details.html', event=event, form=comment_form)
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
