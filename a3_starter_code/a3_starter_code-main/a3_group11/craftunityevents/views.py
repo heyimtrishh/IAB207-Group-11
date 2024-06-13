@@ -18,8 +18,8 @@ def search():
         return render_template('index.html', events=event)
     else:
         return redirect(url_for('main.index'))
-    
-@mainbp.route('/')
+
+@mainbp.route('/category')
 def index():
     events_upcoming = Event.query.filter(Event.start_date >= datetime.now()).all()
     events_exhibition = Event.query.filter(Event.event_category == 'Exhibition').all()
