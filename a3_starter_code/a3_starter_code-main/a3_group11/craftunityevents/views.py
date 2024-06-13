@@ -24,9 +24,3 @@ def index():
     events_demo = Event.query.filter(Event.event_category == 'Live Demo').all()
     return render_template('index.html', 
     events_upcoming=upcoming_events, events_exhibition=events_exhibition, events_workshop=events_workshop, events_demo=events_demo)
-
-# Event Details Page 
-@mainbp.route('/event/<int:id>')
-def show(id):
-    event = Event.query.get_or_404(id)
-    return render_template('event_details.html', event=event)
