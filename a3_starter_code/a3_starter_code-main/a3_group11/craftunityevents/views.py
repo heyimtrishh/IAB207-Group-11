@@ -17,7 +17,6 @@ def search():
 
 @mainbp.route('/')
 def index():
-    today = date.today()
     upcoming_events = Event.query.filter(Event.start_date >= datetime.now()).order_by(Event.start_date.asc()).limit(3).all()
     events_exhibition = Event.query.filter(Event.event_category == 'Exhibition').all()
     events_workshop = Event.query.filter(Event.event_category == 'Workshop').all()
