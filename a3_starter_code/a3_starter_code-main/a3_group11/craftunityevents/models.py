@@ -43,7 +43,7 @@ class Event(db.Model):
 
     # Determine Event's Status
     @property
-    def status(self):
+    def event_status(self):
         today = date.today()
         if self.end_date < today:
             return "Inactive"
