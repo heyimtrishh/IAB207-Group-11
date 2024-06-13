@@ -12,21 +12,20 @@ destbp = Blueprint('event', __name__, url_prefix='/events')
 # Event Details Page 
 @destbp.route('/<id>')
 def details(id):
-    print(f"Fetching event with id {id}")
     event = db.session.scalar(db.select(Event).where(Event.id == id))
     comment_form = CommentForm()
-    return render_template('events/event_details.html', event=event, form=comment_form)
+    return render_template('events/event_details.html', event=event, comment_form=comment_form)
 
 # Comment on Event Details Page
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(event_id):
-    form = CommentForm()
+    comment_form = CommentForm()
     # get the event object associated to the page and the comment
     event = db.session.scalar(db.select(Event).where(Event.id == id))
-    if form.validate_on_submit():
+    if comment_form.validate_on_submit():
         # read the comment from the form
-        comment = Comment(text=form.comment.data, event_id=event_id, user_id=current_user.id)
+        comment = Comment(text=comment_form.comment.data, event_id=event_id, user_id=current_user.id)
         # here the back-referencing works - comment.event is set
         # and the link is created
         db.session.add(comment)
