@@ -41,19 +41,6 @@ class Event(db.Model):
     comments = db.relationship('Comment', backref='event', lazy=True)
     event_bookings = db.relationship('Booking', backref='event', lazy=True)
 
-    # Determine Event's Status
-    @property
-    def event_status(self):
-        today = date.today()
-        if self.end_date < today:
-            return "Inactive"
-        elif self.start_date > today:
-            return "Open"
-        elif self.ticket_quantity <= 0:
-            return "Sold Out"
-        else:
-            return "Open"
-
     def __repr__(self):
         return f"Event: {self.event_name}"
 
