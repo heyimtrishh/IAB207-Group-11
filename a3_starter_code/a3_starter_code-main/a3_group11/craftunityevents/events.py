@@ -9,6 +9,16 @@ from datetime import datetime
 
 destbp = Blueprint('event', __name__, url_prefix='/events')
 
+
+def check_upload_file(form):
+  fp = form.image.data
+  filename = fp.filename
+  BASE_PATH = os.path.dirname(__file__)
+  upload_path = os.path.join(BASE_PATH, 'static/image', secure_filename(filename))
+  db_upload_path = '/static/image/' + secure_filename(filename)
+  fp.save(upload_path)
+  return db_upload_path
+
 @destbp.route('/<id>')
 def show(id):
     event = db.session.scalar(db.select(Event).where(Event.id == id))
