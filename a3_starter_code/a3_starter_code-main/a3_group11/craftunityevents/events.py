@@ -13,7 +13,7 @@ destbp = Blueprint('event', __name__, url_prefix='/events')
 @destbp.route('/event/<int:id>')
 def details(id):
     print(f"Fetching event with id {id}")
-    event = Event.query.get_or_404(id)
+    event = db.session.scalar(db.select(event).where(event.id==id))
     comment_form = CommentForm()
     return render_template('events/event_details.html', event=event, form=comment_form)
 
