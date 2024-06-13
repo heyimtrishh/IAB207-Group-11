@@ -2,7 +2,7 @@
 
 {% block content %}
 <main>
-    <!--Filter Search-->
+    <!-- Filter Search -->
     <div class="container-fluid">
         <div class="row mb-3">
             <div class="col-sm-7">
@@ -27,19 +27,19 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
-    <!--Event Booking History Cards-->
+    <!-- Event Booking History Cards -->
     {% for booking in bookings %}
     <div class="eventbooking container-fluid border mb-4">
         <div class="row">
             <div class="col-sm-3">
-                <a href="{{ url_for('event.details', id=booking.id) }}"><img src="{{ url_for('static', filename='img/' ~ booking.event_image) }}" class="bookingpic img-fluid rounded-start" alt="{{ booking.event_name }}"></a>
+                <a href="{{ url_for('event.details', id=booking.event_id) }}"><img src="{{ url_for('static', filename='img/' ~ booking.event_image) }}" class="bookingpic img-fluid rounded-start" alt="{{ booking.event_name }}"></a>
             </div>
             <div class="col-sm-9">
                 <div class="bookingdetails row">
                     <div class="eventname col-12 col-sm-6">
-                        <h4><a href="event_details.html" class="titlelink">{{ bookings.event_name }}</a></h4>
+                        <h4><a href="{{ url_for('event.details', id=booking.event_id) }}" class="titlelink">{{ booking.event_name }}</a></h4>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
@@ -59,7 +59,7 @@
                             {{ booking.event_quantity }}x {{ booking.event_name }}
                         </div>
                     </div>
-                    <!--Event Date & Status-->
+                    <!-- Event Date & Status -->
                     <div class="eventdate col-6 col-sm-3">
                         <h5 class="card-title">Event Date</h5>
                         <p class="card-text mb-0">{{ booking.event_date.strftime('%d %B, %Y') }}</p>
@@ -67,7 +67,7 @@
                         <h5 class="card-title mb-2">Status</h5>
                         <p id="upcoming">{{ booking.status_id }}</p>
                     </div>
-                    <!--Order ID-->
+                    <!-- Order ID -->
                     <div class="eventdate col-6 col-sm-3">
                         <h5 class="card-title">Order ID</h5>
                         <p>{{ booking.id }}</p>
@@ -78,22 +78,22 @@
     </div>
     {% endfor %}
 
-    <!--Page Navigation-->
+    <!-- Page Navigation -->
     <div class="pagenav">
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                <a class="page-link text-muted" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
+                    <a class="page-link text-muted" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
                 </li>
                 <li class="page-item"><a class="page-link text-muted" href="#">1</a></li>
                 <li class="page-item"><a class="page-link text-muted" href="#">2</a></li>
                 <li class="page-item"><a class="page-link text-muted" href="#">3</a></li>
                 <li class="page-item">
-                <a class="page-link text-muted" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
+                    <a class="page-link text-muted" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
                 </li>
             </ul>
         </nav>
