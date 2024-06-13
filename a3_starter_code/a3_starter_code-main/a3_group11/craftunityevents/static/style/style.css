@@ -150,7 +150,7 @@ main {
 @media (min-width: 768px) {
     /* Home Page */
     .index {
-        padding: 5vw 10vw;
+        padding: 5vw 7vw;
     }
 
     .cardrow h3, .card-body h3 {
