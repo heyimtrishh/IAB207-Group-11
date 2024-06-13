@@ -120,5 +120,23 @@
             <h3>About This Event</h3>
             <p>{{ event.event_description }}</p>
         </section>
+
+        <!--Organiser's Profile-->
+        <section class="organiser container-fluid borders">
+            <hr class="my-4">
+            <h3>Organised By</h3>
+            <div class="usercommentcard card">
+                <div class="organiserbox card-body">
+                    <div class="row">
+                        <div class="pfp col-sm-3">
+                            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/organiserpfp.jpeg') }}" class="commentpfp">
+                        </div>
+                        <div class="organiserinfo col-sm-9">
+                            <h5>{{ event.user.full_name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </main>
 {% endblock %}
