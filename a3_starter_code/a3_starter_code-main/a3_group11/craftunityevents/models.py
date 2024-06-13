@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
     
     # Relationships
     comments = db.relationship('Comment', backref='user', lazy=True)
+    events = db.relationship('Event', backref='user', lazy=True)
 
     def __repr__(self):
         return f"Name: {self.full_name}"
