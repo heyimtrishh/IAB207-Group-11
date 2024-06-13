@@ -14,7 +14,6 @@ class User(db.Model, UserMixin):
     # Relationships
     comments = db.relationship('Comment', backref='user', lazy=True)
     bookings = db.relationship('Booking', backref='user', lazy=True)
-    created_event = db.relationship('Event', backref='user', lazy=True)
 
     def __repr__(self):
         return f"Name: {self.full_name}"
@@ -38,6 +37,7 @@ class Event(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # Relationship
+    user = db.relationship('User', backref='created_events')
     comments = db.relationship('Comment', backref='event', lazy=True)
     event_bookings = db.relationship('Booking', backref='event', lazy=True)
 
