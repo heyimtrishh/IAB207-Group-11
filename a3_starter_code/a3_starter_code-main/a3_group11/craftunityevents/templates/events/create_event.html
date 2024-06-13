@@ -9,7 +9,7 @@
         <!-- Description of the form -->
         <p>Enter the details of your event so viewers can know what your event is all about!</p>
         <!-- Form to create an event -->
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" action="{{ url_for('destbp.create') }}" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
 
           <!-- Section Title -->
