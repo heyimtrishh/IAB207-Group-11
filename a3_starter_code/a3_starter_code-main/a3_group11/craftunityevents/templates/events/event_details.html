@@ -92,7 +92,7 @@
                                                 <div class="col-sm-4">
                                                     <h3>Order Summary</h3>
                                                     <p>1x General Admission</p>
-                                                    <p>A${{ event.ticket_price }}</p>
+                                                    <p>${{ event.ticket_price }}</p>
                                                     <div class="d-grid">
                                                         <label for="quantity">Number of tickets:</label>
                                                         <input type="number" class="form-control" id="quantity" min="1" max="10" placeholder="Enter amount of tickets.">
@@ -129,7 +129,7 @@
                 <div class="organiserbox card-body">
                     <div class="row">
                         <div class="pfp col-sm-3">
-                            <img class="img-fluid rounded-circle" src="static/img/organiserpfp.jpeg" class="commentpfp">
+                            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/organiserpfp.jpeg') }}" class="commentpfp">
                         </div>
                         <div class="organiserinfo col-sm-9">
                             <h5>{{ event.user.full_name }}</h5>
@@ -160,7 +160,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-2 text-center">
-                                    <img class="commentpfp img-fluid flex-shrink-0 rounded-circle" src="{{ comment.user.profile_picture_url }}" style="width:70px">
+                                    <img class="commentpfp img-fluid flex-shrink-0 rounded-circle" src="{{ url_for('static', filename='img/default-profile.png') }}" style="width:70px">
                                 </div>
                                 <div class="col-10">
                                     <h5>{{ comment.user.full_name }}</h5>
@@ -175,5 +175,4 @@
         </section>
     </section>
 </main>
-
 {% endblock %}

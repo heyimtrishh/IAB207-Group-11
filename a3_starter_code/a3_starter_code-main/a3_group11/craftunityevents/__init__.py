@@ -15,6 +15,10 @@ def create_app():
     db.init_app(app)
     Bootstrap5(app)
 
+    #config upload folder
+    UPLOAD_FOLDER = '/static/image'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
+
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
