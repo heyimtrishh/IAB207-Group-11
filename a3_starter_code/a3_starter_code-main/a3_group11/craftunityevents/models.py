@@ -38,7 +38,6 @@ class Event(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # Relationship
-    user = db.relationship('User', backref='created_events', lazy=True)
     comments = db.relationship('Comment', backref='event', lazy=True)
     event_bookings = db.relationship('Booking', backref='event', lazy=True)
 
