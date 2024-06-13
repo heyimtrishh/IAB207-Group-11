@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Event
-from datetime import datetime
+from datetime import datetime, date 
 from . import db
 
 mainbp = Blueprint('main', __name__)
@@ -17,6 +17,7 @@ def search():
 
 @mainbp.route('/')
 def index():
+    today = date.today()
     upcoming_events = Event.query.filter(Event.start_date >= datetime.now()).order_by(Event.start_date.asc()).limit(3).all()
     events_exhibition = Event.query.filter(Event.event_category == 'Exhibition').all()
     events_workshop = Event.query.filter(Event.event_category == 'Workshop').all()
