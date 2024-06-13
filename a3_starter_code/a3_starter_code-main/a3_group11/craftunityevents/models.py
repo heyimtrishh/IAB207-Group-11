@@ -63,7 +63,7 @@ class Booking(db.Model):
     event_quantity = db.Column(db.Integer, nullable=False)
     event_date = db.Column(db.Date, default=datetime.now, nullable=False)
     start_time = db.Column(db.Time, nullable=False)
-    end_time = db.Column(db.Time), nullable=False)
+    end_time = db.Column(db.Time, nullable=False)
     event_location = db.Column(db.String(200), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
