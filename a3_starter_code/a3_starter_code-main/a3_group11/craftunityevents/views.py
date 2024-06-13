@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Event
-from datetime import datetime, date 
+from datetime import datetime
 from . import db
 
 mainbp = Blueprint('main', __name__)
