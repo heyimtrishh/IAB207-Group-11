@@ -11,7 +11,7 @@
             <div class="image row g-0">
                 <!--Event Image-->
                 <div class="col-md-4">
-                    <img src="{{ event.event_thumbnail }}" class="eventimg" alt="Image of event">
+                    <img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="eventimg" alt="Image of event">
                 </div>
                 <!--Event Detail-->
                 <div class="col-md-8">
