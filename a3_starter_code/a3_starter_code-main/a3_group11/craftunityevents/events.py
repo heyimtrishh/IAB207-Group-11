@@ -34,6 +34,7 @@ def comment(event_id):
         flash('Your comment has been added!', 'success')
         # using redirect sends a GET request to event.show
         return redirect(url_for('event.details', id=id))
+    return render_template('events/event_details.html', event=event, comment_form=comment_form)
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
