@@ -16,12 +16,10 @@ def search():
 
 @mainbp.route('/')
 def index():
-    events_upcoming = Event.query.filter(Event.start_date >= datetime.now()).all()
     events_exhibition = Event.query.filter(Event.event_category == 'Exhibition').all()
     events_workshop = Event.query.filter(Event.event_category == 'Workshop').all()
     events_demo = Event.query.filter(Event.event_category == 'Live Demo').all()
     return render_template('index.html', 
-                           events_upcoming=events_upcoming, 
-                           events_exhibition=events_exhibition, 
-                           events_workshop=events_workshop, 
-                           events_demo=events_demo)
+    events_exhibition=events_exhibition, events_workshop=events_workshop, events_demo=events_demo)
+
+
