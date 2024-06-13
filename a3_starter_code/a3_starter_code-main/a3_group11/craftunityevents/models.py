@@ -1,5 +1,5 @@
 from . import db
-from datetime import datetime
+from datetime import datetime, date
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
@@ -37,12 +37,25 @@ class Event(db.Model):
     ticket_quantity = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    # Relationships
+    # Relationship
     comments = db.relationship('Comment', backref='event', lazy=True)
-    bookings = db.relationship('Booking', backref='event', lazy=True)
+    event_bookings = db.relationship('Booking', backref='event', lazy=True)
+
+    # Determine Event's Status
+    @property
+    def status(self):
+        today = date.today()
+        if self.end_date < today:
+            return "Inactive"
+        elif self.start_date > today:
+            return "Open"
+        elif self.ticket_quantity <= 0:
+            return "Sold Out"
+        else:
+            return "Open"
 
     def __repr__(self):
-        return f"Name: {self.name}"
+        return f"Event: {self.event_name}"
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -69,6 +82,9 @@ class Booking(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('booking_statuses.id'), nullable=False)
 
+    # Relationship
+    event = db.relationship('Event', back_populates='event_bookings', lazy=True)
+
     def __repr__(self):
         return f"Booking for event_id: {self.event_id}, user_id: {self.user_id}"
 
@@ -76,6 +92,8 @@ class BookingStatus(db.Model):
     __tablename__ = 'booking_statuses'
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(50), nullable=False)
+
+    # Relationship
     booking = db.relationship('Booking', backref='status', lazy=True)
 
     def __repr__(self):
