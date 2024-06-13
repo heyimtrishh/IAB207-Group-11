@@ -34,12 +34,12 @@
     <div class="eventbooking container-fluid border mb-4">
         <div class="row">
             <div class="col-sm-3">
-                <a href="{{ url_for('event.details', id=booking.event_id) }}"><img src="{{ url_for('static', filename='img/' ~ booking.event_image) }}" class="bookingpic img-fluid rounded-start" alt="{{ booking.event_name }}"></a>
+                <a href="{{ url_for('event.details', id=booking.id) }}"><img src="{{ url_for('static', filename='img/' ~ booking.event_image) }}" class="bookingpic img-fluid rounded-start" alt="{{ booking.event_name }}"></a>
             </div>
             <div class="col-sm-9">
                 <div class="bookingdetails row">
                     <div class="eventname col-12 col-sm-6">
-                        <h4><a href="event_details.html" class="titlelink">{{ booking.event_name }}</a></h4>
+                        <h4><a href="event_details.html" class="titlelink">{{ bookings.event_name }}</a></h4>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
