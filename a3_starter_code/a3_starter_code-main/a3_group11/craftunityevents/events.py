@@ -36,7 +36,7 @@ def comment(event_id):
         return redirect(url_for('event.details', id=id))
 
 # Create Event
-@destbp.route('/events/create', methods=['GET', 'POST'])
+@destbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     print('Method type: ', request.method)
