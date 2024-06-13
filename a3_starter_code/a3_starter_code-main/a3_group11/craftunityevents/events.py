@@ -11,10 +11,10 @@ destbp = Blueprint('event', __name__, url_prefix='/events')
 
 # Event Details Page 
 @destbp.route('/event/<int:id>')
-def event_details(id):
+def details(id):
     event = Event.query.get_or_404(id)
     comment_form = CommentForm()
-    return render_template('event_details.html', event=event)
+    return render_template('event_details.html', event=event, form=comment_form)
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
