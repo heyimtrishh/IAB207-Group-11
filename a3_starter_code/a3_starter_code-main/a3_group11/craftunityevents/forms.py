@@ -63,7 +63,6 @@ class EventForm(FlaskForm):
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
     ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
     submit = SubmitField("Create Event")
-    update_event = SubmitField("Update Event")
 
 # Edit an event
 class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
