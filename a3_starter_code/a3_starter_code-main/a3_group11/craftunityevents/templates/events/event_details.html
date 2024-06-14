@@ -162,16 +162,6 @@
                 <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
                 <input type="submit" value="Submit Comment">
             </form>
-
-            <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                <!-- Your form fields go here -->
-                {% for comment in event.comments %}
-                    <div class="comment">
-                        <h3>{{ comment.user.full_name }}</h3>
-                        <p>{{ comment.text }}</p>
-                    </div>
-                {% endfor %}
-            </form>
         </section>
 
 </main>
