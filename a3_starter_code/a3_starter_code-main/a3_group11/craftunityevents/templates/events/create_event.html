@@ -94,7 +94,7 @@
             {{ form.event_type(class="form-control") }}
           </div>
 
-          <!-- Start and End Date & Time -->
+          <!-- Start and End Date -->
           <div class="eventrow row mb-3">
             <div class="col-md-6">
               <label for="start_date" class="form-label">
@@ -110,14 +110,41 @@
             <div class="col-md-6">
               <label for="end_date" class="form-label">
                 <!-- Icon for End Date -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                </svg>
+                End Date
+              </label>
+              <!-- End Date Input Field -->
+              {{ form.end_date(class="form-control") }}
+            </div>
+          </div>
+
+          <!-- Start and End Time -->
+          <div class="eventrow row mb-3">
+            <div class="col-md-6">
+              <label for="start_date" class="form-label">
+                <!-- Icon for Start Time -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                </svg>
+                Start Date
+              </label>
+              <!-- Start Date Input Field -->
+              {{ form.start_time(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+              <label for="end_date" class="form-label">
+                <!-- Icon for End Time -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                   <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                   <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                 </svg>
                 End Date
               </label>
-              <!-- End Date Input Field -->
-              {{ form.end_date(class="form-control") }}
+              <!-- End Time Input Field -->
+              {{ form.end_time(class="form-control") }}
             </div>
           </div>
 
@@ -178,7 +205,7 @@
           </div>
 
           <!-- Submit Button -->
-          <div class="col-12">
+          <div class="col-12 mb-5">
             {{ form.submit(class="btn btn-dark") }}
           </div>
         </form>

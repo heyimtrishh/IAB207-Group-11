@@ -219,6 +219,11 @@ main {
     max-width: 100% !important; 
 }
 
+.form-select {
+    padding: 0px !important;
+    text-decoration: none;
+}
+
 .alert-dismissible {
     margin: 0px !important;
     font-weight: 700;
