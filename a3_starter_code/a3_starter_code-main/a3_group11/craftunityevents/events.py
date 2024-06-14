@@ -41,42 +41,40 @@ def create():
     form = EventForm()
     
     if form.validate_on_submit():
-        db_file_path = check_upload_file(form.event_thumbnail.data)
-        print(f"File path: {db_file_path}")
+        db_file_path = check_upload_file()
+        print(db_file_path)
 
-        try:
             # Instantiate an Event object with the following form fields
-            event = Event(
-                event_name=form.event_name.data,
-                category=form.event_category.data,
-                start_time=form.start_time.data,  
-                end_time=form.end_time.data,
-                start_date=form.start_date.data,
-                end_date=form.end_date.data,
-                location=form.event_location.data,
-                image=db_file_path,
-                description=form.event_description.data,
-                price=form.ticket_price.data,
-                num_tickets=form.ticket_quantity.data,
-                created_by=current_user.id
+        event = Event(
+            event_name=form.event_name.data,
+            category=form.event_category.data,
+            start_time=form.start_time.data,  
+            end_time=form.end_time.data,
+            start_date=form.start_date.data,
+            end_date=form.end_date.data,
+            location=form.event_location.data,
+            image=db_file_path,
+            description=form.event_description.data,
+            price=form.ticket_price.data,
+            num_tickets=form.ticket_quantity.data,
+            created_by=current_user.id
             )
-            # Add the object to the db session
-            db.session.add(event)
-            # Commit to the database
-            db.session.commit()
-            flash(f'Successfully created new event for {event.event_name}!', 'success')
-            return redirect(url_for('event.event_details', id=event.id))
-        except Exception as e:
-            db.session.rollback()
-            flash('An error occurred. Event creation failed.', 'danger')
-            print(f"Exception: {e}")
+        
+        # Add the object to the db session
+        db.session.add(event)
+
+        # Commit to the database
+        db.session.commit()
+        print('Successfully created new event', 'success')
+        flash(f"'{event.event_name} was succesfully created!", 'success')
+        return redirect(url_for('event.event_details', id=event.id))
+    
     else:
         print("Form not validated")
         print(form.errors) # Print form errors to the console
         for fieldName, errorMessages in form.errors.items():
             for err in errorMessages:
                 print(f"Error in {fieldName}: {err}")
-
     return render_template('events/create_event.html', form=form)
 
 # Update Event as Event Creator
