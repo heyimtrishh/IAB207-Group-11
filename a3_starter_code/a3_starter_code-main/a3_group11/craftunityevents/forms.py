@@ -88,3 +88,11 @@ class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
     ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
     submit = SubmitField("Update Event")
+
+    start_date = DateField("Start Date", validators=[InputRequired()])
+    end_date = DateField("End Date", validators=[InputRequired()])
+    event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
+    ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
+    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
+    ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
+    submit = SubmitField("Update Event")
