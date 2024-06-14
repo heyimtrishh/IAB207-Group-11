@@ -77,6 +77,23 @@ def create():
                 print(f"Error in {fieldName}: {err}")
     return render_template('events/create_event.html', form=form)
 
+# Booking History
+@destbp.route('/booking_history', methods=['GET'])
+@login_required
+def booking_history():
+    user_id = current_user.id
+    bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
+    event_data = []
+
+    for booking in bookings:
+        event = db.session.query(Event).filter_by(id=booking.events_id).first()
+        event_data.append({
+            'event': event,
+            'tickets': booking.tickets
+        })
+    return render_template('events/userbookinghistory.html', event_data=event_data)
+
+
 # Update Event as Event Creator
 @destbp.route('/<id>/update', methods=['GET', 'POST'])
 @login_required
@@ -147,22 +164,6 @@ def book_event(id):
         flash('Sorry, this event is not available for booking.', 'info')
         return redirect(url_for('event.details', id=id))
     
-# Booking History
-@destbp.route('/userbookinghistory', methods=['GET'])
-@login_required
-def booking_history():
-    user_id = current_user.id
-    bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
-    event_data = []
-
-    for booking in bookings:
-        event = db.session.query(Event).filter_by(id=booking.events_id).first()
-        event_data.append({
-            'event': event,
-            'tickets': booking.tickets
-        })
-    return render_template('events/create_event.html', event_data=event_data)
-
     #form = OrderForm()
     #if form.validate_on_submit():
      #   order = Order(
