@@ -58,6 +58,7 @@ class Booking(db.Model):
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(100), nullable=False)
+    event_thumbnail = db.Column(db.String(400))
     event_price = db.Column(db.Float, nullable=False)
     event_quantity = db.Column(db.Integer, nullable=False)
     event_date = db.Column(db.Date, default=datetime.now, nullable=False)
