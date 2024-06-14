@@ -219,13 +219,29 @@ main {
     max-width: 100% !important; 
 }
 
-.form-select {
-    padding: 0px !important;
+/* Remove list-style and adjust padding */
+.event-category .form-check {
+    list-style-type: none; 
+    padding-right: 20px; 
 }
 
-.form-select ul {
-    text-decoration: none;
+/* Style the radio buttons and labels */
+.event-category .form-check-input {
+    margin-left: 0 !important;
+    margin-right: 10px; 
 }
+
+.event-category .form-check-label {
+    display: inline-block; 
+}
+
+/* Adjust the container holding the radio buttons */
+.event-category .form-check {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
 
 .alert-dismissible {
     margin: 0px !important;
