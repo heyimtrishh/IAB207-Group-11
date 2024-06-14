@@ -30,7 +30,8 @@ def comment(id):
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been added!', 'success')
-    return redirect(url_for('event.details', id=event.id))
+        return redirect(url_for('event.details', id=id))
+    return render_template('events/event_details.html', form=comment_form, event=event)
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
