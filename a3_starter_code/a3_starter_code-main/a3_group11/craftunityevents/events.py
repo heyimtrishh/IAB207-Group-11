@@ -150,7 +150,7 @@ def book_event(id):
 # Booking History
 @destbp.route('/userbookinghistory', methods=['GET'])
 @login_required
-def booking_history(user_id):
+def booking_history():
     user_id = current_user.id
     bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
     event_data = []
