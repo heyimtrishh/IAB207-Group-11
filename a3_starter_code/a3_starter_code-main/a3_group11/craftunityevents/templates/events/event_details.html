@@ -150,17 +150,31 @@
                 </div>
             </div>
 
-            <div class="row border-bottom"> 
-                {{ render_form(form,"/events/{0}/comment".format(event.id)) }}
-            
-                {% for comment in event.comments %}
+            <div class="row border-bottom">
+                <!-- Comment Form -->
                 <div class="col-md-12">
-                    <b>{{ comment.user.full_name }} <span class="ml-2 text-muted">{{ comment.posted_at }}</span></b>
-                    <p>{{ comment.text }}</p>
-                </div> 
-                {% endfor %} 
+                    <form method="POST" action="{{ url_for('destbp.comment', id=event.id) }}">
+                        {{ comment_form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ comment_form.text.label(class="form-label") }}
+                            {{ comment_form.text(class="form-control", rows=3) }}
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-</section>
+
+            <div class="row">
+                {% for comment in event.comments %}
+                <div class="col-md-12 border-bottom mb-3">
+                    <b>{{ comment.user.full_name }} <span class="ml-2 text-muted">{{ comment.posted_at.strftime('%Y-%m-%d %H:%M:%S') }}</span></b>
+                    <p>{{ comment.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
 </main>
 {% endblock %}
