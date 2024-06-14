@@ -1,170 +1,223 @@
 {% extends 'base.html' %}
 
-{% import "bootstrap5/form.html" as wtf %}
-
 {% block content %}
-<main>
-    <!--Event Details Card-->
-    <section class="details">
-        <article class="card mb-3 mx-auto" style="max-width: 1000px;">
-            <!--Image and Event Info-->
-            <div class="image row g-0">
-                <!--Event Image-->
-                <div class="col-md-4">
-                    <img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="eventimg" alt="Image of event">
-                </div>
-                <!--Event Detail-->
-                <div class="col-md-8">
-                    <div class="rightcol card-body">
-                        <h3>{{ event.event_name }}</h3>
-                        <p>{{ event.event_description }}</p>
-                        <div class="basic-info">
-                            <!--Date & Time-->
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                                </svg>
-                                {{ event.start_date }}, {{ event.start_time }} - {{ event.end_time }}
-                            </div>
-                            <!--Location-->
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                </svg>
-                                {{ event.event_location }}
-                            </div>
-                            <!--Ticket Cost-->
-                            <div class="mb-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
-                                </svg>
-                                ${{ event.ticket_price }}
-                            </div>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <!-- Page Title -->
+        <h1>Create Your Own Event</h1>
+        <!-- Description of the form -->
+        <p>Enter the details of your event so viewers can know what your event is all about!</p>
+        <!-- Form to create an event -->
+        <form method="POST" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
 
-                            <!-- Button trigger modal -->
-                            <div class="bookingmodal d-flex align-items-center">
-                                {% if current_user.is_authenticated %}
-                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Book Tickets
-                                    </button>
-                                {% else %}
-                                    <a href="{{ url_for('auth.login') }}" class="btn btn-dark">
-                                        Log In to Book Tickets
-                                    </a>
-                                {% endif %}
-                                <span class="badge bg-secondary me-3">{{ event.status }}</span>
-                            </div>
+          <!-- Section Title -->
+          <legend>Your Event Details</legend>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-lg-down">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Book Tickets For</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <!--Modal Body Content-->
-                                        <div class="modal-body container-fluid">
-                                            <div class="row">
-                                                <div class="col-sm-8 mb-3">
-                                                    <h3>{{ event.event_name }}</h3>
-                                                    <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                                                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                                                        </svg>
-                                                        {{ event.start_date }}, {{ event.start_time }} - {{ event.end_time }}
-                                                        <!--Select Ticket-->
-                                                        <div class="selectticket row border border-secondary-subtle rounded p-3 my-3 mx-1">
-                                                            <div class="col-sm-9">
-                                                                <p>${{ event.ticket_price }} - Concession Admission Ticket</p>
-                                                            </div>
-                                                            <div class="col-sm-3 text-end">
-                                                                <button type="button" class="btn btn-dark" data-bs-toggle="button">Select</button>
-                                                            </div>
-                                                        </div>
+          <!-- Event Name -->
+          <div class="eventrow col-md-6 mb-3">
+            <label for="event_name" class="form-label">
+              <!-- Icon for Event Name -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+              Event Name
+            </label>
+            <!-- Event Name Input Field -->
+            {{ form.event_name(class="form-control", placeholder="Type your event name.") }}
+          </div>
 
-                                                        <div class="selectticket row border border-secondary-subtle rounded p-3 my-3 mx-1">
-                                                            <div class="col-sm-9">
-                                                                <p>${{ event.ticket_price }} - General Admission Ticket</p>
-                                                            </div>
-                                                            <div class="col-sm-3 text-end">
-                                                                <button type="button" class="btn btn-dark" data-bs-toggle="button">Select</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <h3>Order Summary</h3>
-                                                    <p>1x General Admission</p>
-                                                    <p>${{ event.ticket_price }}</p>
-                                                    <div class="d-grid">
-                                                        <label for="quantity">Number of tickets:</label>
-                                                        <input type="number" class="form-control" id="quantity" min="1" max="10" placeholder="Enter amount of tickets.">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <p class="mx-2">Total: ${{ event.ticket_price }}</p>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-dark">Checkout</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
+          <div class="eventrow col-md-5">
+            <label for="event_category" class="form-label">
+              Event Category
+            </label>
+            <div>
+              <!-- Example Radio Button 1 -->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="event_category" id="Workshop" value="option1">
+                <label class="form-check-label" for="Workshop">Workshop</label>
+              </div>
+              <!-- Example Radio Button 2 -->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="event_category" id="Exhibition" value="option2">
+                <label class="form-check-label" for="Exhibition">Exhibition</label>
+              </div>
+              <!-- Add more radio buttons as needed -->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="event_category" id="Live Sketching" value="option3">
+                <label class="form-check-label" for="Live Sketching">Live Sketching</label>
+              </div>
             </div>
-        </article>
-
-        <!--'About This Event' Section-->
-        <section class="eventinfo container-fluid">
-            <hr class="my-4">
-            <h3>About This Event</h3>
-            <p>{{ event.event_description }}</p>
-        </section>
-
-        <!--Organiser's Profile-->
-        <section class="organiser container-fluid borders">
-            <hr class="my-4">
-            <h3>Organised By</h3>
-            <div class="usercommentcard card">
-                <div class="organiserbox card-body">
-                    <div class="row">
-                        <div class="organiserinfo col-sm-9">
-                            <h5>{{ event.user.full_name }}</h5>
-                        </div>
-                    </div>
-                </div>
+          </div>
+            <!-- Event Thumbnail -->
+            <div class="eventrow col-md-6">
+              <label for="event_thumbnail" class="form-label">
+                <!-- Icon for Event Thumbnail -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                  <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                Event Image Thumbnail
+              </label>
+              <!-- Thumbnail Description -->
+              <p>This is the first image that attendees will see.</p>
+              <!-- Event Thumbnail Input -->
+              {{ form.event_thumbnail(class="form-control") }}
             </div>
-        </section>
+          </div>
 
-        <!--Comment Section-->
-        <section class="comments container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h3>Comment Section</h3>
-                </div>
+          <!-- Event Summary -->
+          <div class="eventrow col-12 mb-3">
+            <label for="event_summary" class="form-label">
+              <!-- Icon for Event Summary -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-richtext" viewBox="0 0 16 16">
+                <path d="M7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208M5 9a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/>
+              </svg>
+              Event Summary
+            </label>
+            <!-- Event Summary Input Field -->
+            {{ form.event_summary(class="form-control", placeholder="Summarise your event to engage attendees.") }}
+          </div>
+
+          <!-- Event Location -->
+          <div class="eventrow col-12 mb-3">
+            <label for="event_location" class="form-label">
+              <!-- Icon for Event Location -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+              </svg>
+              Event Location
+            </label>
+            <!-- Event Location Input Field -->
+            {{ form.event_location(class="form-control", placeholder="e.g. 1234 Main St, 4321") }}
+          </div>
+
+          <!-- Event Type -->
+          <div class="eventrow row mb-3">
+            <label for="event_type" class="form-label">Event Type</label>
+            <!-- Event Type Input Field -->
+            {{ form.event_type(class="form-control") }}
+          </div>
+
+          <!-- Start and End Date -->
+          <div class="eventrow row mb-3">
+            <div class="col-md-6">
+              <label for="start_date" class="form-label">
+                <!-- Icon for Start Date -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                </svg>
+                Start Date
+              </label>
+              <!-- Start Date Input Field -->
+              {{ form.start_date(class="form-control") }}
             </div>
+            <div class="col-md-6">
+              <label for="end_date" class="form-label">
+                <!-- Icon for End Date -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                </svg>
+                End Date
+              </label>
+              <!-- End Date Input Field -->
+              {{ form.end_date(class="form-control") }}
+            </div>
+          </div>
 
-            <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    <label for="comment">Post a comment:</label>
-                    {{ form.text(class="form-control", id="comment", placeholder="Enter your comment here") }}
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary">Post</button>
-                
-                {% for comment in event.comments %}
-                    <b><p>{{ comment.user.full_name }}</p></b>
-                    <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
-                {% endfor %}
-            </form>
-        </section>
+          <!-- Start and End Time -->
+          <div class="eventrow row mb-3">
+            <div class="col-md-6">
+              <label for="start_time" class="form-label">
+                <!-- Icon for Start Time -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                </svg>
+                Start Time
+              </label>
+              <!-- Start Time Input Field -->
+              {{ form.start_time(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+              <label for="end_time" class="form-label">
+                <!-- Icon for End Time -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                </svg>
+                End Time
+              </label>
+              <!-- End Time Input Field -->
+              {{ form.end_time(class="form-control") }}
+            </div>
+          </div>
 
-</main>
+          <!-- Event Description -->
+          <div class="eventrow col-12 mb-3">
+            <label for="event_description" class="form-label">
+              <!-- Icon for Event Description -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-body-text" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 0 .5m0 2A.5.5 0 0 1 .5 2h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m9 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-9 2A.5.5 0 0 1 .5 4h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m5 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m7 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-12 2A.5.5 0 0 1 .5 6h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8 0a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-7 2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+              </svg>
+              Event Description
+            </label>
+            <!-- Event Description Input Field -->
+            {{ form.event_description(class="form-control", placeholder="Include all the exciting & essential event details.") }}
+          </div>
+
+          <!-- Section Title -->
+          <legend>Ticket Details</legend>
+
+          <!-- Ticket Name -->
+          <div class="col-md-5 mb-3">
+            <label for="ticket_name" class="form-label">
+              <!-- Icon for Ticket Name -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+              Ticket Name
+            </label>
+            <!-- Ticket Name Input Field -->
+            {{ form.ticket_name(class="form-control", placeholder="e.g. General Admission") }}
+          </div>
+
+          <!-- Ticket Quantity -->
+          <div class="col-md-3 mb-3">
+            <label for="ticket_quantity" class="form-label">
+              <!-- Icon for Ticket Quantity -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1zM1 8a1.5 1.5 0 0 0 0 3h1v-1H1v-1h1v-1H1zm14 0a.5.5 0 0 0 0 3h1v-1h-1v-1h1v-1h-1z"/>
+              </svg>
+              Quantity
+            </label>
+            <!-- Ticket Quantity Input Field -->
+            {{ form.ticket_quantity(class="form-control", placeholder="No. of Tickets") }}
+          </div>
+
+          <!-- Ticket Price -->
+          <div class="col-md-3 mb-3">
+            <label for="ticket_price" class="form-label">
+              <!-- Icon for Ticket Price -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+              </svg>
+              Price
+            </label>
+            <!-- Ticket Price Input Field -->
+            {{ form.ticket_price(class="form-control", placeholder="Cost") }}
+          </div>
+
+          <!-- Submit Button -->
+          <div class="col-12 mb-5">
+            {{ form.submit(class="btn btn-dark") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}
