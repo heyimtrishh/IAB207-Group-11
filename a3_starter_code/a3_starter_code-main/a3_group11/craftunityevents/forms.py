@@ -4,7 +4,7 @@ from wtforms.fields import (
     PasswordField, RadioField, SelectField, 
     DateTimeField, IntegerField, DateField, TimeField 
 )
-from wtforms.validators import InputRequired, Length, Email, EqualTo
+from wtforms.validators import InputRequired, Length, Email, EqualTo, NumberRange
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 # Creates the login information
@@ -60,8 +60,8 @@ class EventForm(FlaskForm):
     start_time = TimeField("Start Date", validators=[InputRequired()])
     end_time = TimeField("End Date", validators=[InputRequired()])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
-    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
-    ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
+    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets"), NumberRange(min=1)])
+    ticket_price = IntegerField("Price", validators=[InputRequired("Cost"), NumberRange(min=0)])
     submit = SubmitField("Create Event")
 
 # Edit an event
@@ -85,14 +85,6 @@ class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
     end_date = DateField("End Date", validators=[InputRequired()])
     event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
-    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
-    ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
-    submit = SubmitField("Update Event")
-
-    start_date = DateField("Start Date", validators=[InputRequired()])
-    end_date = DateField("End Date", validators=[InputRequired()])
-    event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
-    ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
-    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
-    ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
+    ticket_quantity = IntegerField("Quantity", validators=[InputRequired("Cost"), NumberRange(min=1)])
+    ticket_price = IntegerField("Price", validators=[InputRequired("Cost"), NumberRange(min=0)])
     submit = SubmitField("Update Event")
