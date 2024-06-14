@@ -222,6 +222,7 @@ main {
 /* Remove list-style and adjust padding */
 .event-category .form-check {
     list-style-type: none; 
+    text-decoration: none;
     padding-right: 20px; 
 }
 
