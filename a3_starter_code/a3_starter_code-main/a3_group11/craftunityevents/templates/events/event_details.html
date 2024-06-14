@@ -147,6 +147,20 @@
             <div class="row">
                 <div class="col">
                     <h3>Comment Section</h3>
+                </div>
+            </div>
+
+            <div class="row border-bottom"> 
+                {{ render_form(form,"/events/{0}/comment".format(event.id)) }}
+            
+                {% for comment in event.comments %}
+                <div class="col-md-12">
+                    <b>{{ comment.user.full_name }} <span class="ml-2 text-muted">{{ comment.posted_at }}</span></b>
+                    <p>{{ comment.text }}</p>
+                </div> 
+                {% endfor %} 
+                </div>
+            </div>
 </section>
 </main>
 {% endblock %}

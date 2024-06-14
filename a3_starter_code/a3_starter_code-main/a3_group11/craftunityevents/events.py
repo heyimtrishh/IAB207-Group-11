@@ -17,21 +17,16 @@ def details(id):
     return render_template('events/event_details.html', event=event, comment_form=comment_form)
 
 # Comment on Event Details Page
-@destbp.route('/<int:id>/comment', methods=['POST'])
+@destbp.route('/<id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(id):
     comment_form = CommentForm()
     event = db.session.scalar(db.select(Event).where(Event.id == id))
-    if event is None:
-        flash('Event not found', 'danger')
-        return redirect(url_for('main.index'))
     if comment_form.validate_on_submit():
-        comment = Comment(text=comment_form.text.data, event_id=id, user_id=current_user.id)
+        comment = Comment(text=comment_form.text.data, event=event, user=current_user)
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been added!', 'success')
-    else:
-        flash('Error in form submission', 'danger')
     return redirect(url_for('event.details', id=id))
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
