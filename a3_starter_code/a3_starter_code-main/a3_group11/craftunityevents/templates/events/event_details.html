@@ -155,10 +155,11 @@
                     <label for="comment">Post a comment:</label>
                     <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                 </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 
                 {% for comment in event.comments %}
-                    <b><<p>{{ comment.user.full_name }}</p>/b>
+                    <b><<p>{{ comment.user.full_name }}</p></b>
                     <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
                 {% endfor %}
             </form>
