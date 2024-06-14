@@ -64,9 +64,9 @@
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
+                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
+                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -94,9 +94,9 @@
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
+                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
+                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -125,9 +125,9 @@
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <h4 class="fs-6">{{ event.event_status }}</h4>
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
+                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
+                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
                 </div>
             </div>
             {% endfor %}
