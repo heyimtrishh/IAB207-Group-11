@@ -224,6 +224,7 @@ main {
     list-style-type: none; 
     text-decoration: none;
     padding-right: 20px; 
+    display: block;
 }
 
 /* Style the radio buttons and labels */
@@ -232,17 +233,11 @@ main {
     margin-right: 10px; 
 }
 
-.event-category .form-check-label {
-    display: inline-block; 
-}
-
-/* Adjust the container holding the radio buttons */
-.event-category .form-check {
+.event-category .form-check label {
     display: flex; 
     align-items: center; 
     margin-bottom: 10px; 
 }
-
 
 .alert-dismissible {
     margin: 0px !important;
