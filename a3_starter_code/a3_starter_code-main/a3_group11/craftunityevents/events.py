@@ -20,11 +20,12 @@ def details(id):
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(id):
+    text = request.form.get('text')
     comment_form = CommentForm()
     event = db.session.scalar(db.select(Event).where(Event.id == id))
     user = db.session.scalar(db.select(User).where(User.id == current_user.id))
     if comment_form.validate_on_submit():
-        comment = Comment(text=comment_form.text.data, event=event, user=current_user)
+        comment = Comment(text=text, event_id=id, user_id=user.id)
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been added!', 'success')
