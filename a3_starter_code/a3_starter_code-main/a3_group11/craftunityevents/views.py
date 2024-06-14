@@ -15,7 +15,6 @@ def search():
     else:
         return redirect(url_for('main.index'))
 
-# Index / Home Page 
 @mainbp.route('/')
 def index():
     upcoming_events = Event.query.filter(Event.start_date >= datetime.now()).order_by(Event.start_date.asc()).limit(3).all()
@@ -24,3 +23,5 @@ def index():
     events_demo = Event.query.filter(Event.event_category == 'Live Demo').all()
     return render_template('index.html', 
     events_upcoming=upcoming_events, events_exhibition=events_exhibition, events_workshop=events_workshop, events_demo=events_demo)
+
+
