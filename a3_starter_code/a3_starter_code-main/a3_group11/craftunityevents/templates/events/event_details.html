@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Event Details{% endblock %}
+{% import "bootstrap5/form.html" as wtf %}
 
 {% block content %}
 <main>
@@ -11,7 +11,7 @@
             <div class="image row g-0">
                 <!--Event Image-->
                 <div class="col-md-4">
-                    <img src="{{ event.event_thumbnail }}" class="eventimg" alt="Image of event">
+                    <img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="eventimg" alt="Image of event">
                 </div>
                 <!--Event Detail-->
                 <div class="col-md-8">
@@ -44,9 +44,15 @@
 
                             <!-- Button trigger modal -->
                             <div class="bookingmodal d-flex align-items-center">
-                                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Book Tickets
-                                </button>
+                                {% if current_user.is_authenticated %}
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Book Tickets
+                                    </button>
+                                {% else %}
+                                    <a href="{{ url_for('auth.login') }}" class="btn btn-dark">
+                                        Log In to Book Tickets
+                                    </a>
+                                {% endif %}
                                 <span class="badge bg-secondary me-3">{{ event.status }}</span>
                             </div>
 
@@ -92,7 +98,7 @@
                                                 <div class="col-sm-4">
                                                     <h3>Order Summary</h3>
                                                     <p>1x General Admission</p>
-                                                    <p>A${{ event.ticket_price }}</p>
+                                                    <p>${{ event.ticket_price }}</p>
                                                     <div class="d-grid">
                                                         <label for="quantity">Number of tickets:</label>
                                                         <input type="number" class="form-control" id="quantity" min="1" max="10" placeholder="Enter amount of tickets.">
@@ -128,9 +134,6 @@
             <div class="usercommentcard card">
                 <div class="organiserbox card-body">
                     <div class="row">
-                        <div class="pfp col-sm-3">
-                            <img class="img-fluid rounded-circle" src="static/img/organiserpfp.jpeg" class="commentpfp">
-                        </div>
                         <div class="organiserinfo col-sm-9">
                             <h5>{{ event.user.full_name }}</h5>
                         </div>
@@ -144,35 +147,24 @@
             <div class="row">
                 <div class="col">
                     <h3>Comment Section</h3>
-                    <!--Comment Box-->
-                    <form class="commentbox was-validated" method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                        {{ form.hidden_tag() }}
-                        <div class="mb-3">
-                            {{ form.textarea(class="form-control is-invalid", placeholder="Type your comment...", required=True) }}
-                        </div>
-                        <div class="mb-3">
-                            <button class="bookbtn btn btn-dark shadow-none" type="submit">Post Comment</button>
-                        </div>
-                    </form>
-                    <!--Other Users' Comments-->
-                    {% for comment in event.comments %}
-                    <div class="usercommentcard card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-2 text-center">
-                                    <img class="commentpfp img-fluid flex-shrink-0 rounded-circle" src="{{ comment.user.profile_picture_url }}" style="width:70px">
-                                </div>
-                                <div class="col-10">
-                                    <h5>{{ comment.user.full_name }}</h5>
-                                    <p class="usercomment">{{ comment.text }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
                 </div>
             </div>
+
+            <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label for="comment">Post a comment:</label>
+                    {{ form.text(class="form-control", id="comment", placeholder="Enter your comment here") }}
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Post</button>
+                
+                {% for comment in event.comments %}
+                    <b><p>{{ comment.user.full_name }}</p></b>
+                    <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
+                {% endfor %}
+            </form>
         </section>
-    </section>
+
 </main>
 {% endblock %}

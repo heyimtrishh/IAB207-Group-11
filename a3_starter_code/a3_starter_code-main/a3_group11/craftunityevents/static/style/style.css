@@ -150,7 +150,7 @@ main {
 @media (min-width: 768px) {
     /* Home Page */
     .index {
-        padding: 5vw 10vw;
+        padding: 5vw 7vw;
     }
 
     .cardrow h3, .card-body h3 {
@@ -217,6 +217,13 @@ main {
 .form-control {
     width: 300px !important; 
     max-width: 100% !important; 
+}
+
+/* Remove list-style and adjust padding */
+.event-category .form-check {
+    list-style-type: none; 
+    text-decoration: none;
+    padding-right: 20px; 
 }
 
 .alert-dismissible {
@@ -342,7 +349,7 @@ main {
 }
 
 .organiserbox {
-    padding: 40px !important;
+    padding: 20px !important;
     background: aliceblue;
 }
 
