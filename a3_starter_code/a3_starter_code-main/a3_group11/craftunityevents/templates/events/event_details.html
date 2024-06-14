@@ -150,17 +150,12 @@
                 </div>
             </div>
 
-            {% for comment in event.comments %}
-                <div class="comment">
-                    <h3>{{ comment.user.full_name }}</h3>
-                    <p>{{ comment.text }}</p>
-                </div>
-            {% endfor %}
-
             <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                <label for="text">New Comment:</label><br>
-                <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
-                <input type="submit" value="Submit Comment">
+                <!-- Your form fields go here -->
+                {% for comment in event.comments %}
+                    <p>{{ comment.user.full_name }}</p>
+                    <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
+                {% endfor %}
             </form>
         </section>
 
