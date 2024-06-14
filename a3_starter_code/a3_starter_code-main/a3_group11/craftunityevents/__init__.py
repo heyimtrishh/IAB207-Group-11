@@ -10,14 +10,12 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.debug = True
+    UPLOAD_FOLDER = '\static\image'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
     app.secret_key = 'somesecretkey'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eventdata.db'
     db.init_app(app)
     Bootstrap5(app)
-
-    #config upload folder
-    UPLOAD_FOLDER = '/static/image'
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
