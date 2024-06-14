@@ -31,7 +31,7 @@
 
           <div class="row mb-3">
             <!-- Event Category -->
-            <div class="eventrow col-md-5 event-category">
+            <div class="eventrow col-md-5">
               <label for="event_category" class="form-label">
                 <!-- Icon for Event Category -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="currentColor" class="bi bi-ui-checks-grid" viewBox="0 0 16 16">
@@ -40,13 +40,7 @@
                 Event Category
               </label> 
               <!-- Event Category Dropdown -->
-              {{ form.event_category.label }}
-              {% for subfield in form.event_category %}
-              <tr>
-                  <td>{{ subfield(class="form-check-input") }}</td>
-                  <td>{{ subfield.label }}</td>
-              </tr>
-              {% endfor %}
+              {{ form.event_category(class="form-check") }}
             </div>
 
             <!-- Event Thumbnail -->
