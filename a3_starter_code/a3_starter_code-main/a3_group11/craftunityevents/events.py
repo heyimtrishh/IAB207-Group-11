@@ -21,7 +21,6 @@ def details(id):
 @login_required
 def comment(id):
     event = db.session.scalar(db.select(Event).where(Event.id == id))
-    text = request.form.get('comment')
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
         comment = Comment(
