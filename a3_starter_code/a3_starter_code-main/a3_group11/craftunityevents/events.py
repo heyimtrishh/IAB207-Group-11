@@ -148,7 +148,7 @@ def book_event(id):
         return redirect(url_for('event.details', id=id))
     
 # Booking History
-@destbp.route('/user/<int:user_id>/bookings', methods=['GET'])
+@destbp.route('/userbookinghistory', methods=['GET'])
 @login_required
 def booking_history(user_id):
     user_id = current_user.id
