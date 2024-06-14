@@ -51,6 +51,8 @@ class Comment(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
+    user = db.relationship('User', backref='comments', lazy=True)
+
     def __repr__(self):
         return f"Comment: {self.text}"
 
