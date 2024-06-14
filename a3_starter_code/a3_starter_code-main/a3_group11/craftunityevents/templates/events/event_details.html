@@ -152,8 +152,8 @@
 
             <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
                 <!-- Your form fields go here -->
-                {% for comment in user.comments.all %}
-                    <p>{{comment.user.full_name }}</p>
+                {% for comment in event.comments %}
+                    <p>{{ comment.user.full_name }}</p>
                     <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
                 {% endfor %}
             </form>
