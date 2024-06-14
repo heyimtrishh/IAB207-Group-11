@@ -153,15 +153,9 @@
             <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
                 <!-- Your form fields go here -->
                 {% for comment in event.comments %}
-                    <div class="usercommentcard card">
-                        <div class="commentbox card-body">
-                            <div class="row">
-                                <div class="commentinfo col-sm-9">
-                                    <h5>{{ comment.user.full_name }}</h5>
-                                    <p>{{ comment.text }}</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="comment">
+                        <h3>{{ comment.user.full_name }}</h3>
+                        <p>{{ comment.text }}</p>
                     </div>
                 {% endfor %}
             </form>
