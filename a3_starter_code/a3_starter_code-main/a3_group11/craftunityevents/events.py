@@ -7,11 +7,13 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from datetime import datetime
 
+# Create a blueprint for event-related routes
 destbp = Blueprint('event', __name__, url_prefix='/events')
 
 # Event Details Page 
 @destbp.route('/<id>')
 def details(id):
+    # Get the event details based on the ID
     event = db.session.scalar(db.select(Event).where(Event.id == id))
     comment_form = CommentForm()
     return render_template('events/event_details.html', event=event, form=comment_form)
@@ -23,6 +25,7 @@ def comment(id):
     event = db.session.scalar(db.select(Event).where(Event.id == id))
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
+        # Create a new comment
         comment = Comment(
             text=comment_form.text.data, 
             event_id=id, 
@@ -37,14 +40,11 @@ def comment(id):
 @destbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    print('Method type: ', request.method)
     form = EventForm()
-    
     if form.validate_on_submit():
-        db_file_path = check_upload_file()
-        print(db_file_path)
-
-            # Instantiate an Event object with the following form fields
+        # Upload the event image
+        db_file_path = check_upload_file(form)
+        # Instantiate an Event object with form data
         event = Event(
             event_name=form.event_name.data,
             category=form.event_category.data,
@@ -58,41 +58,15 @@ def create():
             price=form.ticket_price.data,
             num_tickets=form.ticket_quantity.data,
             created_by=current_user.id
-            )
-        
-        # Add the object to the db session
+        )
         db.session.add(event)
-
-        # Commit to the database
         db.session.commit()
-        print('Successfully created new event', 'success')
-        flash(f"'{event.event_name} was succesfully created!", 'success')
-        return redirect(url_for('event.event_details', id=event.id))
-    
+        flash(f"'{event.event_name} was successfully created!", 'success')
+        return redirect(url_for('event.details', id=event.id))
     else:
         print("Form not validated")
         print(form.errors) # Print form errors to the console
-        for fieldName, errorMessages in form.errors.items():
-            for err in errorMessages:
-                print(f"Error in {fieldName}: {err}")
     return render_template('events/create_event.html', form=form)
-
-# Booking History
-@destbp.route('/booking_history', methods=['GET'])
-@login_required
-def booking_history():
-    user_id = current_user.id
-    bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
-    event_data = []
-
-    for booking in bookings:
-        event = db.session.query(Event).filter_by(id=booking.events_id).first()
-        event_data.append({
-            'event': event,
-            'tickets': booking.tickets
-        })
-    return render_template('events/userbookinghistory.html', event_data=event_data)
-
 
 # Update Event as Event Creator
 @destbp.route('/<id>/update', methods=['GET', 'POST'])
@@ -106,6 +80,7 @@ def update_event(id):
 
     form = UpdateEventForm(obj=event)
     if form.validate_on_submit():
+        # Update the event with the new data from the form
         event.event_name = form.event_name.data
         event.category = form.event_category.data
         event.start_time = form.start_time.data
@@ -130,7 +105,7 @@ def update_event(id):
 @login_required
 def cancel_event(id):
     event = Event.query.get_or_404(id)
-    # Only Event Creator Can Cancel Event
+    # Only the event creator can cancel the event
     if event.created_by != current_user.id:
         flash('Sorry, you do not have permission to cancel this event.')
         return redirect(url_for('event.details', id=id))
@@ -141,16 +116,16 @@ def cancel_event(id):
 
 # File Upload
 def check_upload_file(form):
-    # get file data from form  
+    # Get file data from the form  
     fp = form.image.data
     filename = secure_filename(fp.filename)
-    # get the current path of the module file… store image file relative to this path  
+    # Get the current path of the module file
     BASE_PATH = os.path.dirname(__file__)
-    # upload file location – directory of this file/static/image
+    # Upload file location – directory of this file/static/image
     upload_path = os.path.join(BASE_PATH, 'static/image', filename)
-    # store relative path in DB as image location in HTML is relative
+    # Store relative path in DB as image location in HTML is relative
     db_upload_path = '/static/image/' + filename
-    # save the file and return the db upload path
+    # Save the file and return the db upload path
     fp.save(upload_path)
     return db_upload_path
 
@@ -163,20 +138,22 @@ def book_event(id):
     if event.status != 'Open':
         flash('Sorry, this event is not available for booking.', 'info')
         return redirect(url_for('event.details', id=id))
-    
-    #form = OrderForm()
-    #if form.validate_on_submit():
-     #   order = Order(
-      #      user_id=current_user.id,
-       #     event_id=event.id,
-        #    quantity=form.quantity.data,
-         #   order_date=datetime.now()
-        #)
-        #db.session.add(order)
-        #db.session.commit()
-        #flash(f'Tickets booked successfully! Your Order ID is: {order.id}', 'success')
-        #return redirect(url_for('event.show', id=id))
-    #return render_template('events/book.html', form=form, event=event)
+
+# Booking History
+@destbp.route('/userbookinghistory', methods=['GET'])
+@login_required
+def booking_history():
+    user_id = current_user.id
+    bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
+    event_data = []
+
+    for booking in bookings:
+        event = db.session.query(Event).filter_by(id=booking.events_id).first()
+        event_data.append({
+            'event': event,
+            'tickets': booking.tickets
+        })
+    return render_template('events/userbookinghistory.html', event_data=event_data)
 
 # Error Handlers
 @destbp.errorhandler(404)
