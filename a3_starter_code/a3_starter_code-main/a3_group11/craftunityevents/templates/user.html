@@ -9,19 +9,20 @@
 <div class="accounts-background">
     <div class="accounts">
         <div class="account-box">
+            <!-- Page Heading -->
             <h2>{{ heading }}</h2>
 
+            <!-- Form for user registration or login -->
             <form method="post" class="fixed-width">
                 {{ form.csrf_token }}
                 {{ wtf.render_form(form) }}
             </form>
 
-            <!-- Display a link to the Login page if user is on Register page -->
-            <!-- Display a link to the Register page if user is on Log In page -->
+            <!-- Conditional links for navigation between Register and Login pages -->
             {% if heading|lower == "register" %}
-            <a href="{{ url_for('auth.login') }}" class="sign-in">Already have an account? Sign In Now</a>
+                <a href="{{ url_for('auth.login') }}" class="sign-in">Already have an account? Sign In Now</a>
             {% else %}
-            <a href="{{ url_for('auth.register') }}" class="sign-in">Don't have an account?</a>
+                <a href="{{ url_for('auth.register') }}" class="sign-in">Don't have an account?</a>
             {% endif %}
         </div>
     </div>
