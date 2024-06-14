@@ -227,18 +227,6 @@ main {
     display: block;
 }
 
-/* Style the radio buttons and labels */
-.event-category .form-check-input {
-    margin-left: 0 !important;
-    margin-right: 10px; 
-}
-
-.event-category .form-check label {
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 10px; 
-}
-
 .alert-dismissible {
     margin: 0px !important;
     font-weight: 700;
