@@ -2,53 +2,17 @@
 
 {% block content %}
 <main>
-    <!-- Filter Search -->
-    <div class="container-fluid">
-        <div class="row mb-3">
-            <div class="col-sm-7">
-                <h1>Booking History</h1>
-            </div>
-            <div class="col-sm-5">
-                <div class="input-group">
-                    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-                    <button type="button" class="btn btn-outline-dark">Search</button>
-                    <button type="button" class="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <label for="exampleFilterSearch" class="form-label container m-0">Sort By</label>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">This Week</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">Newest to Oldest</a></li>
-                        <li><a class="dropdown-item" href="#">Oldest to Newest</a></li>
-                        <li><a class="dropdown-item" href="#">A to Z</a></li>
-                    </ul>
-                </div>
-            </div>
+
+    <h1>User Bookings</h1>
+    {% for booking in bookings %}
+        <div>
+            <h2>{{ booking.event_name }}</h2>
+            <p>Event Date: {{ booking.event_date }}</p>
+            <p>Start Time: {{ booking.start_time }}</p>
+            <p>End Time: {{ booking.end_time }}</p>
+            <p>Location: {{ booking.event_location }}</p>
         </div>
-    </div>
+    {% endfor %}
 
-
-    <!-- Page Navigation -->
-    <div class="pagenav">
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link text-muted" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link text-muted" href="#">1</a></li>
-                <li class="page-item"><a class="page-link text-muted" href="#">2</a></li>
-                <li class="page-item"><a class="page-link text-muted" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link text-muted" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 </main>
 {% endblock %}

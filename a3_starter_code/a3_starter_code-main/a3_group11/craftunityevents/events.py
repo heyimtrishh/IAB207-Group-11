@@ -148,12 +148,20 @@ def book_event(id):
         return redirect(url_for('event.details', id=id))
     
 # Booking History
-@destbp.route('/userbookinghistory', methods=['GET'])
+@destbp.route('/user/<int:user_id>/bookings', methods=['GET'])
 @login_required
-def userbookinghistory():
-    # Fetch events booked by the current user
-    bookings = Booking.query.filter_by(user_id=current_user.id).all()
-    return render_template('events/userbookinghistory.html', bookings=bookings)
+def booking_history(user_id):
+    user_id = current_user.id
+    bookings = db.session.scalar(db.select(Booking).where(Booking.user_id == user_id))
+    event_data = []
+
+    for booking in bookings:
+        event = db.session.query(Event).filter_by(id=booking.events_id).first()
+        event_data.append({
+            'event': event,
+            'tickets': booking.tickets
+        })
+    return render_template('events/userbookinghistory.html', event_data=event_data)
 
     #form = OrderForm()
     #if form.validate_on_submit():
