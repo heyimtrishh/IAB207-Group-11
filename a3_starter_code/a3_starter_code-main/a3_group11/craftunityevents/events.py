@@ -20,16 +20,15 @@ def details(id):
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(id):
-    text = request.form.get('text')
-    comment_form = CommentForm()
     event = db.session.scalar(db.select(Event).where(Event.id == id))
-    user = db.session.scalar(db.select(User).where(User.id == current_user.id))
+    text = request.form.get('comment')
+    comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        comment = Comment(text=text, event_id=id, user_id=user.id)
+        comment = Comment(text=text, event_id=id, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been added!', 'success')
-    return redirect(url_for('event.details', id=id))
+    return redirect(url_for('event.details', id=event.id))
 
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
