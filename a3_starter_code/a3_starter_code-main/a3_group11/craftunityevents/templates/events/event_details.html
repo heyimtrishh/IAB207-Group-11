@@ -151,9 +151,16 @@
             </div>
 
             <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
-                <!-- Your form fields go here -->
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label for="comment">Post a comment:</label>
+                    {{ form.text(class_="form-control") }}
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Post</button>
+                
                 {% for comment in event.comments %}
-                    <p>{{ comment.user.full_name }}</p>
+                    <b><p>{{ comment.user.full_name }}</p></b>
                     <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
                 {% endfor %}
             </form>
