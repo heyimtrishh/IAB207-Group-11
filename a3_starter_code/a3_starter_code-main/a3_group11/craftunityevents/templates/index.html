@@ -30,8 +30,8 @@
         <div class="cardrow row">
             {% for event in events_upcoming %}
             <div class="col-md">
-                <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
-                <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
@@ -60,8 +60,8 @@
         <div class="cardrow row">
             {% for event in events_exhibition %}
             <div class="col-md">
-                <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
-                <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
@@ -90,8 +90,8 @@
         <div class="cardrow row">
             {% for event in events_workshop %}
             <div class="col-md">
-                <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
-                <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <div class="event-time">
                     <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
@@ -120,8 +120,8 @@
         <div class="cardrow row">
             {% for event in events_demo %}
             <div class="col-md">
-                <a href="{{ url_for('event.show', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
-                <h3><a class="titlelink" href="{{ url_for('event.show', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
                 <h4 class="fs-6">{{ event.event_type }}</h4>
                 <h4 class="fs-6">{{ event.event_status }}</h4>
                 <div class="event-time">
