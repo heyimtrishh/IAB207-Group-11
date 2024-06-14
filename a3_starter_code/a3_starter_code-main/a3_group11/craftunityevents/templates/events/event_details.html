@@ -1,25 +1,27 @@
+<!-- Extends the base template -->
 {% extends 'base.html' %}
 
+<!-- Imports Bootstrap form helpers for WTForms -->
 {% import "bootstrap5/form.html" as wtf %}
 
 {% block content %}
 <main>
-    <!--Event Details Card-->
+    <!-- Event Details Card -->
     <section class="details">
         <article class="card mb-3 mx-auto" style="max-width: 1000px;">
-            <!--Image and Event Info-->
+            <!-- Image and Event Info -->
             <div class="image row g-0">
-                <!--Event Image-->
+                <!-- Event Image -->
                 <div class="col-md-4">
                     <img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="eventimg" alt="Image of event">
                 </div>
-                <!--Event Detail-->
+                <!-- Event Details -->
                 <div class="col-md-8">
                     <div class="rightcol card-body">
                         <h3>{{ event.event_name }}</h3>
                         <p>{{ event.event_description }}</p>
                         <div class="basic-info">
-                            <!--Date & Time-->
+                            <!-- Date & Time -->
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                                     <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
@@ -28,14 +30,14 @@
                                 {{ event.start_date.strftime('%d %b %Y') }} - {{ event.end_date.strftime('%d %b %Y') }},
                                 {{ event.start_time.strftime('%I:%M %p') }} - {{ event.end_time.strftime('%I:%M %p') }}
                             </div>
-                            <!--Location-->
+                            <!-- Location -->
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                                 </svg>
                                 {{ event.event_location }}
                             </div>
-                            <!--Ticket Cost-->
+                            <!-- Ticket Cost -->
                             <div class="mb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
                                     <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
@@ -65,7 +67,7 @@
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Book Tickets For</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <!--Modal Body Content-->
+                                        <!-- Modal Body Content -->
                                         <div class="modal-body container-fluid">
                                             <div class="row">
                                                 <div class="col-sm-8 mb-3">
@@ -76,7 +78,7 @@
                                                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                                                         </svg>
                                                         {{ event.start_date }}, {{ event.start_time }} - {{ event.end_time }}
-                                                        <!--Select Ticket-->
+                                                        <!-- Select Ticket -->
                                                         <div class="selectticket row border border-secondary-subtle rounded p-3 my-3 mx-1">
                                                             <div class="col-sm-9">
                                                                 <p>${{ event.ticket_price }} - Concession Admission Ticket</p>
@@ -121,14 +123,14 @@
             </div>
         </article>
 
-        <!--'About This Event' Section-->
+        <!-- 'About This Event' Section -->
         <section class="eventinfo container-fluid">
             <hr class="my-4">
             <h3>About This Event</h3>
             <p>{{ event.event_description }}</p>
         </section>
 
-        <!--Organiser's Profile-->
+        <!-- Organiser's Profile -->
         <section class="organiser container-fluid borders">
             <hr class="my-4">
             <h3>Organised By</h3>
@@ -143,7 +145,7 @@
             </div>
         </section>
 
-        <!--Comment Section-->
+        <!-- Comment Section -->
         <section class="comments container-fluid">
             <div class="row">
                 <div class="col">
@@ -151,21 +153,25 @@
                 </div>
             </div>
 
+            <!-- Form to post a comment -->
             <form method="POST" action="{{ url_for('event.comment', id=event.id) }}">
+                <!-- CSRF protection token -->
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                     <label for="comment">Post a comment:</label>
+                    <!-- Comment input field -->
                     {{ form.text(class="form-control", id="comment", placeholder="Enter your comment here") }}
                 </div>
                 <br>
+                <!-- Submit button for the comment form -->
                 <button type="submit" class="btn btn-primary">Post</button>
                 
+                <!-- Display existing comments -->
                 {% for comment in event.comments %}
                     <b><p>{{ comment.user.full_name }}</p></b>
-                    <p>{{ comment.text }}</p> <!-- Assuming 'content' is a field in your Comment model -->
+                    <p>{{ comment.text }}</p>
                 {% endfor %}
             </form>
         </section>
-
 </main>
 {% endblock %}

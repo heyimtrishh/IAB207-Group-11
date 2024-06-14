@@ -5,7 +5,9 @@
 {% block content %}
 <section class="index">
     <section class="jumbotron text-center">
+        <!-- Main Title -->
         <h1 class="display-5">explore the vibrant world of arts & crafts</h1>
+        <!-- Navigation Buttons -->
         <p class="lead">
             <a href="#exhibitions" class="btn btn-dark shadow-none mb-2" role="button">Exhibitions</a>
             <a href="#workshops" class="btn btn-dark shadow-none mb-2" role="button">Workshops</a>
@@ -13,9 +15,10 @@
         </p>
     </section>
 
-    <!--Upcoming Events-->
+    <!-- Upcoming Events -->
     <section class="upcoming container-fluid">
         <div class="row">
+            <!-- Section Title -->
             <div class="maintitle col-sm-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
                     <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
@@ -23,20 +26,26 @@
                 </svg>
                 Upcoming Events
             </div>
+            <!-- Explore More Link -->
             <div class="exploremore col-sm-4 text-end">
                 <a href="#">See all events ></a>
             </div>
         </div>
+        <!-- Upcoming Events Cards -->
         <div class="cardrow row">
             {% for event in events_upcoming %}
             <div class="col-md">
+                <!-- Event Image -->
                 <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <!-- Event Name -->
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <!-- Event Type -->
                 <h4 class="fs-6">{{ event.event_type }}</h4>
+                <!-- Event Time -->
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
+                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
+                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -44,29 +53,36 @@
         <hr class="my-4" id="exhibitions">
     </section>
 
-    <!--Exhibitions-->
+    <!-- Exhibitions -->
     <section class="upcoming container-fluid">
         <div class="row">
+            <!-- Section Title -->
             <div class="maintitle col-sm-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-easel-fill" viewBox="0 0 16 16">
                     <path d="M8.473.337a.5.5 0 0 0-.946 0L6.954 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h1.85l-1.323 3.837a.5.5 0 1 0 .946.326L4.908 11H7.5v2.5a.5.5 0 0 0 1 0V11h2.592l1.435 4.163a.5.5 0 0 0 .946-.326L12.15 11H14a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H9.046z"/>
                 </svg>
                 Popular Exhibitions
             </div>
+            <!-- Explore More Link -->
             <div class="exploremore col-sm-4 text-end">
                 <a href="#">See all events ></a>
             </div>
         </div>
+        <!-- Exhibitions Cards -->
         <div class="cardrow row">
             {% for event in events_exhibition %}
             <div class="col-md">
+                <!-- Event Image -->
                 <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <!-- Event Name -->
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <!-- Event Type -->
                 <h4 class="fs-6">{{ event.event_type }}</h4>
+                <!-- Event Time -->
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
+                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
+                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -74,29 +90,36 @@
         <hr class="my-4" id="workshops">
     </section>
 
-    <!--Workshop Events-->
+    <!-- Workshops -->
     <section class="upcoming container-fluid">
         <div class="row">
+            <!-- Section Title -->
             <div class="maintitle col-sm-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-heart-fill" viewBox="0 0 16 16">
                     <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
                 </svg>
                 Popular Workshops
             </div>
+            <!-- Explore More Link -->
             <div class="exploremore col-sm-4 text-end">
                 <a href="#">See all events ></a>
             </div>
         </div>
+        <!-- Workshops Cards -->
         <div class="cardrow row">
             {% for event in events_workshop %}
             <div class="col-md">
+                <!-- Event Image -->
                 <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <!-- Event Name -->
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <!-- Event Type -->
                 <h4 class="fs-6">{{ event.event_type }}</h4>
+                <!-- Event Time -->
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
+                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
+                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -104,30 +127,38 @@
         <hr class="my-4" id="demos">
     </section>
 
-    <!--Live Demos-->
+    <!-- Live Demonstrations -->
     <section class="upcoming container-fluid">
         <div class="row">
+            <!-- Section Title -->
             <div class="maintitle col-sm-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
                     <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                 </svg>
                 New Live Demonstrations
             </div>
+            <!-- Explore More Link -->
             <div class="exploremore col-sm-4 text-end">
                 <a href="#">See all events ></a>
             </div>
         </div>
+        <!-- Live Demonstrations Cards -->
         <div class="cardrow row">
             {% for event in events_demo %}
             <div class="col-md">
+                <!-- Event Image -->
                 <a href="{{ url_for('event.details', id=event.id) }}"><img src="{{ url_for('static', filename='image/' ~ event.event_thumbnail) }}" class="imagehover" alt="Event Image"></a>
+                <!-- Event Name -->
                 <h3><a class="titlelink" href="{{ url_for('event.details', id=event.id) }}">{{ event.event_name }}</a></h3>
+                <!-- Event Type -->
                 <h4 class="fs-6">{{ event.event_type }}</h4>
+                <!-- Event Status -->
                 <h4 class="fs-6">{{ event.event_status }}</h4>
+                <!-- Event Time -->
                 <div class="event-time">
-                    <p class="fs-6">{{ event.start_date.strftime('%d %b %Y') }} to {{ event.end_date.strftime('%d %b %Y') }}</p>
+                    <p class="fs-6">{{ event.start_date }} to {{ event.end_date }}</p>
                     <br>
-                    <p class="fs-6">{{ event.start_time.strftime('%I:%M %p') }} to {{ event.end_time.strftime('%I:%M %p') }}</p>
+                    <p class="fs-6">{{ event.start_time }} to {{ event.end_time }}</p>
                 </div>
             </div>
             {% endfor %}

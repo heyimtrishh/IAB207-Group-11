@@ -1,3 +1,4 @@
+<!-- Extends the base template -->
 {% extends "base.html" %}
 
 {% block content %}
@@ -5,8 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
+            <!-- Error Title -->
             <h1>Error</h1>
+            <!-- Error Description -->
             <p>Something went wrong! More info:</p>
+            <!-- Display the error message -->
             <p>{{error}}</p>
         </div>
     </div>
