@@ -68,6 +68,7 @@ def create():
             print(f"Exception: {e}")
     else:
         print("Form not validated")
+        print(form.errors) # Print form errors to the console
         for fieldName, errorMessages in form.errors.items():
             for err in errorMessages:
                 print(f"Error in {fieldName}: {err}")
