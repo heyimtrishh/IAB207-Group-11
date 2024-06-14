@@ -1,0 +1,418 @@
+DaltonBernard99 (33):
+      Update models.py
+      Update models.py
+      Update models.py
+      Update models.py
+      Update forms.py
+      Update base.html
+      Update user.html
+      Create login.html
+      signup.html
+      Update Base
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      changes to better format create_event.html and adjusting style.css along with it
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      added more comments for createevent
+      Update create_event.html
+      Update create_event.html
+      Update create_event.html
+      Update create_event.html
+      Update event_details.html
+      Update userbookinghistory.html
+      Update 404.html
+      Update base.html
+      Update error.html
+      Update index.html
+      Update signup.html
+      Update user.html
+      Update __init__.py
+      Update auth.py
+      Update events.py
+      Update forms.py
+      Update models.py
+      Update views.py
+
+Harrison Schloss (11):
+      Add files via upload
+      update forms, added edit event
+      Update module name dependency for main.py
+      Added create_db.py
+      removed old forms version
+      Add Error Handling
+      upload folder initialised
+      check_file_upload
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      Revert "Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11"
+      ticket number and price constraints added
+
+Nina Chung (88):
+      Update show.html
+      Add files via upload
+      Update models.py
+      Update __init__.py
+      Update models.py
+      Update events.py
+      update models.py
+      update models.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      changes to model.py and auth.py
+      changes to forms.py for class RegisterForm
+      changes to auth.py to email_id in def register()
+      changes to auth.py > register .. to add contact number and address
+      changes in events.py
+      changes to events.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      Add files via upload
+      null comment.?
+      changes to base.html
+      changes to base.html
+      changes to base.html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      added a 2024 date to the footer
+      changes to userbookinghistory.html > corrected corresponding html links
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      sync changes
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      changes to event_details.html
+      merge
+      merge
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merge
+      changes to userbookinghistory.html
+      changes to userbookinghistory.html
+      merges
+      changes to event.py
+      changes to event.py
+      changes to events.py
+      changes to userbookinghistory.html
+      syncing merges
+      changes to events.py
+      changes to event.py
+      changes to events.py
+      changes to forms.py and date/time formatting
+      changes to events.py
+      merge
+      merge
+      changes to forms.py
+      merge
+      changes to events.py
+      changes to forms.py and events.py
+      changes to create_event.html
+      changes to create_event.html
+      changes to create_event.html
+      changes to create_event.html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merges
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      CHANGES TO FORMS.PY
+      merges
+      merges
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merges
+      added a print(form.errors) to events.py
+      merges
+      update models py
+      update event_details
+      revert models py
+      update models py and event
+      update models.py
+      revert models py
+      update event_details.html
+      update event_details.html
+      updare events.py and event_details.html
+      update events.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merges
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merges
+      changes to events.py
+      merge
+      changes to create event html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      changes to create event html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      merge
+      changes to event details
+      merge
+
+Trish (278):
+      Add files via upload
+      Add files via upload
+      Delete a3_starter_code (1)/a3_starter_code-main/projectfile directory
+      Create static/image folder
+      Add files via upload
+      Update index.html
+      Create 404.html
+      Create create.html
+      Create show.html
+      delete static file
+      Add files via upload
+      Add files via upload
+      change folder name
+      delete image
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/exhibition1.jpg
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/exhibition2.jpg
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/workshop1.jpg
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/workshop2.jpg
+      Add files via upload
+      delete and relocate folder
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/workshop3.jpg
+      Update style.css
+      Update index.html (connect to css)
+      Add files via upload
+      updating index html
+      Create instance folder
+      Database
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/eventdb.sqlite
+      Add files via upload
+      Helped update forms.py by adding contact number
+      Update models.py
+      Update models.py
+      Update models.py
+      Update __init__.py
+      Update auth.py
+      Update views.py
+      Create events.py
+      Update events.py
+      Update index.html
+      Update base.html (css directory)
+      Create event_details
+      Update event_details
+      Update event_details
+      Rename event_details to event_details.html
+      Update eventcreation.html
+      Update eventcreation.html
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/templates/events/show.html
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/templates/events/create.html
+      Update and rename eventcreation.html to create_event.html
+      Update views.py
+      Update userbookinghistory.html
+      Update forms.py
+      Update base.html
+      Update events.py
+      Update events.py
+      Update forms.py
+      Update forms.py
+      Update events.py
+      Update events.py
+      Update __init__.py
+      Update base.html
+      Update models.py
+      Update forms.py
+      Update __init__.py
+      change main_bp to mainbp
+      update models.py and __init__.py
+      Add files via upload
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance/eventdb.sqlite
+      edit models.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance/eventdata.db
+      Add files via upload
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance/eventdata.db.sql
+      Add files via upload
+      Add files via upload
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance/eventdata.sqlite
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      change sql file name
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance directory
+      Add files via upload
+      change events to event
+      change base.html
+      change __init__ py
+      update events.py
+      update events.py
+      update init py
+      delete views from init py
+      update events.py
+      update base.html & init py
+      update init py
+      update events py
+      update events.py
+      change base html
+      update html files
+      update html
+      correct css style
+      add padding to jumbotron
+      update css
+      update html and css
+      update css
+      update css
+      update html
+      update forms py and css
+      update css
+      update auth.py
+      update auth, css, base
+      revert changes
+      update css
+      update css
+      update css
+      u
+      update css
+      update css
+      update css
+      update css
+      update forms py
+      update forms and user
+      update ayth and user
+      update signup html
+      update forms py
+      update user html
+      update css and user html
+      update user html
+      update css
+      update css and user
+      update css
+      update css
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update user html
+      update css
+      update css
+      update css
+      update user html
+      update css
+      update css
+      update css
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/instance directory
+      Add files via upload
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/instance directory
+      Add files via upload
+      eventdata
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/static/image directory
+      Add files via upload
+      Update event_details.html
+      Add files via upload
+      Update models.py
+      Add files via upload
+      update models.py
+      Add files via upload
+      update index.html
+      update views.py and index.html
+      update init.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update views.py
+      update views.py
+      update views.py
+      update index html
+      update index.html
+      update index html
+      update views py
+      update index.html models.py
+      update models py and index html
+      update views py
+      update init py
+      update models py
+      update index html
+      update views py
+      update models py views py
+      update models py
+      update models py
+      update models py
+      update css
+      update index and views py
+      update events py views py index html
+      events py
+      update base html
+      update main py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update events py and index html
+      events py
+      update models py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      revert models py
+      update models py
+      update events py
+      update events py
+      events py
+      update event_details
+      update event_details and initpy
+      Add files via upload
+      update models py
+      update events py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update events py
+      update events py
+      update events py
+      update event_details
+      revert event details
+      update events py
+      Update event_details.html (deleted organiser n comments)
+      update event details html
+      update event_detail
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update models py and event details html
+      update events ps and event_details html
+      update event details
+      update events py
+      update event details html
+      Add files via upload
+      Update models.py
+      Add files via upload
+      update base
+      update forms py event_details html
+      update style css and create events html
+      adjust layout of create event html
+      adjust layout for create event html
+      update css
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update creat event html
+      update css
+      update css
+      update create html
+      update create event html
+      update creat event html and css
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      updsaTE EVENTS DETAILS AND EVENTS PY FOR COMMENT SECTION
+      update event_details and css
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      import logging
+      update event_details
+      update main
+      update event_details
+      update models py and event_details html
+      update models py
+      update model.py
+      revert models py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update models.py
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update models.py
+      update event_details
+      update event_details
+      update events.py and event_details.html
+      update event_details.html
+      update event_details.html
+      update events.py
+      update events.py and event_details.html
+      update events.py
+      update events.py and event_details.html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update events.py and userbookinghistory.html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      identifying issue in userbookinghistory.html
+      update events.py and userbookinghistory
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      update userbookinghistory
+      update base html events py
+      update userbookinghistory
+      update events py
+      delete userbookinghistory
+      Update event_details.html to new
+      Update events.py
+      Update forms.py
+      Update index.html
+      Update base.html
+      Update create_event.html
+      Delete a3_starter_code/a3_starter_code-main/a3_group11/craftunityevents/templates/events/userbookinghistory.html
+      Add files via upload
+      Update userbookinghistory.html
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+      test
+      update
+      update
+      update
+      update
+      Merge branch 'main' of https://github.com/heyimtrishh/IAB207-Group-11
+
