@@ -221,6 +221,9 @@ main {
 
 .form-select {
     padding: 0px !important;
+}
+
+.form-select ul {
     text-decoration: none;
 }
 
