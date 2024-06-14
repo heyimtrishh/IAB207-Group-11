@@ -154,7 +154,7 @@ def book_event(id):
 @login_required
 def userbookinghistory():
     # Fetch events booked by the current user
-    bookings = db.session.query(bookings).filter_by(user_id=current_user.id).all()
+    bookings = Booking.query.filter_by(user_id=current_user.id).all()
     return render_template('events/userbookinghistory.html', bookings=bookings)
 
     #form = OrderForm()
