@@ -161,7 +161,7 @@ def booking_history():
             'event': event,
             'tickets': booking.tickets
         })
-    return render_template('events/userbookinghistory.html', event_data=event_data)
+    return render_template('events/create_event.html', event_data=event_data)
 
     #form = OrderForm()
     #if form.validate_on_submit():
