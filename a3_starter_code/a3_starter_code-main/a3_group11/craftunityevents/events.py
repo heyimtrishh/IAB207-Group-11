@@ -28,6 +28,7 @@ def comment(id):
         db.session.commit()
         flash('Your comment has been added!', 'success')
     return redirect(url_for('event.details', id=id))
+
 # Create Event
 @destbp.route('/create', methods=['GET', 'POST'])
 @login_required
@@ -44,8 +45,8 @@ def create():
             event = Event(
                 event_name=form.event_name.data,
                 category=form.event_category.data,
-                start_time=form.start_time.data,  # Ensure these fields are present in the form and model
-                end_time=form.end_time.data,  # Ensure these fields are present in the form and model
+                start_time=form.start_time.data,  
+                end_time=form.end_time.data,
                 start_date=form.start_date.data,
                 end_date=form.end_date.data,
                 location=form.event_location.data,
