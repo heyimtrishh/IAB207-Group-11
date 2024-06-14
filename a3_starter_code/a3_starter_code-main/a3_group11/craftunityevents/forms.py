@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import (
     TextAreaField, SubmitField, StringField, 
     PasswordField, RadioField, SelectField, 
-    DateTimeField, IntegerField
+    DateTimeField, IntegerField, DateField, TimeField 
 )
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
@@ -54,13 +54,16 @@ class EventForm(FlaskForm):
         ("Single Event", "Single Event"),
         ("Recurring Event", "Recurring Event")
     ])
-    start_date = DateTimeField("Start Date", validators=[InputRequired()])
-    end_date = DateTimeField("End Date", validators=[InputRequired()])
+    start_date = DateField("Start Date", validators=[InputRequired()])
+    end_date = DateField("End Date", validators=[InputRequired()])
     event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
+    start_time = TimeField("Start Date", validators=[InputRequired()])
+    end_time = TimeField("End Date", validators=[InputRequired()])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])
     ticket_price = IntegerField("Price", validators=[InputRequired("Cost")])
     submit = SubmitField("Create Event")
+    update_event = SubmitField("Update Event")
 
 # Edit an event
 class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
@@ -79,8 +82,8 @@ class UpdateEventForm(FlaskForm):  # Changed class name to avoid duplication
         ("Single Event", "Single Event"),
         ("Recurring Event", "Recurring Event")
     ])
-    start_date = DateTimeField("Start Date", validators=[InputRequired()])
-    end_date = DateTimeField("End Date", validators=[InputRequired()])
+    start_date = DateField("Start Date", validators=[InputRequired()])
+    end_date = DateField("End Date", validators=[InputRequired()])
     event_description = StringField("Event Description", validators=[InputRequired("Include all the exciting & essential event details")])
     ticket_name = StringField("Ticket Name", validators=[InputRequired("e.g. General Admission")])
     ticket_quantity = IntegerField("Quantity", validators=[InputRequired("No. of Tickets")])

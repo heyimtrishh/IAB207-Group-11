@@ -44,9 +44,15 @@
 
                             <!-- Button trigger modal -->
                             <div class="bookingmodal d-flex align-items-center">
-                                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Book Tickets
-                                </button>
+                                {% if current_user.is_authenticated %}
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Book Tickets
+                                    </button>
+                                {% else %}
+                                    <a href="{{ url_for('auth.login') }}" class="btn btn-dark">
+                                        Log In to Book Tickets
+                                    </a>
+                                {% endif %}
                                 <span class="badge bg-secondary me-3">{{ event.status }}</span>
                             </div>
 
@@ -128,9 +134,6 @@
             <div class="usercommentcard card">
                 <div class="organiserbox card-body">
                     <div class="row">
-                        <div class="pfp col-sm-3">
-                            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/organiserpfp.jpeg') }}" class="commentpfp">
-                        </div>
                         <div class="organiserinfo col-sm-9">
                             <h5>{{ event.user.full_name }}</h5>
                         </div>
@@ -138,6 +141,12 @@
                 </div>
             </div>
         </section>
+
+        <!--Comment Section-->
+        <section class="comments container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h3>Comment Section</h3>
 </section>
 </main>
 {% endblock %}
