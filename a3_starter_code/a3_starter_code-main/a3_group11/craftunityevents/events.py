@@ -24,7 +24,10 @@ def comment(id):
     text = request.form.get('comment')
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        comment = Comment(text=text, event_id=id, user_id=current_user.id)
+        comment = Comment(
+            text=comment_form.text.data, 
+            event_id=id, 
+            user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been added!', 'success')
