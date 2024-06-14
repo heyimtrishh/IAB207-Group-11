@@ -4,15 +4,19 @@
 <main>
 
     <h1>User Bookings</h1>
-    {% for booking in bookings %}
-        <div>
-            <h2>{{ booking.event_name }}</h2>
-            <p>Event Date: {{ booking.event_date }}</p>
-            <p>Start Time: {{ booking.start_time }}</p>
-            <p>End Time: {{ booking.end_time }}</p>
-            <p>Location: {{ booking.event_location }}</p>
-        </div>
-    {% endfor %}
+    {% if event_data %}
+        {% for booking in bookings %}
+            <div>
+                <h2>{{ booking.event_name }}</h2>
+                <p>Event Date: {{ booking.event_date }}</p>
+                <p>Start Time: {{ booking.start_time }}</p>
+                <p>End Time: {{ booking.end_time }}</p>
+                <p>Location: {{ booking.event_location }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
 
 </main>
 {% endblock %}
